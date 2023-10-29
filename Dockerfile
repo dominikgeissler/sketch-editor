@@ -3,21 +3,21 @@ FROM ubuntu as SKETCH
 
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
-    rm -rf /var/lib/apt/lists/*
+  apt-get -y upgrade && \
+  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
+  rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
 RUN curl -o tmp/sketch.tar.gz https://people.csail.mit.edu/asolar/sketch-1.7.6.tar.gz && \
-    tar -xzvf /tmp/sketch.tar.gz -C /tmp && \
-    mv /tmp/sketch-1.7.6 /home/sketch && \
-    rm /tmp/sketch.tar.gz /home/sketch/README
+  tar -xzvf /tmp/sketch.tar.gz -C /tmp && \
+  mv /tmp/sketch-1.7.6 /home/sketch && \
+  rm /tmp/sketch.tar.gz /home/sketch/README
 
 # Install sketch (steps from the README)
 RUN cd /home/sketch/sketch-backend && \
-    chmod +x ./configure && \
-    bash configure && \
-    make
+  chmod +x ./configure && \
+  bash configure && \
+  make
 
 # Set up environmental variables and aliases
 ENV PATH="${PATH}:/home/sketch/sketch-frontend"

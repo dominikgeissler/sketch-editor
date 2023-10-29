@@ -1,8 +1,9 @@
 name: Docker Build Image & Publish
 
 on:
-  push:
-    branches: ["main"]
+  # TODO comment back in
+  # push:
+  #   branches: ["main"]
   pull_request:
     branches: ["main"]
 
@@ -19,7 +20,6 @@ jobs:
       packages: write
 
     steps:
-      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
