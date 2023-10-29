@@ -1,5 +1,4 @@
-name: Publish Image to GitHub package registry
-
+name: publish to github packages
 on:
   # TODO comment back in
   # push:
