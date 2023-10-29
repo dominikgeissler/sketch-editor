@@ -4,7 +4,7 @@ Dockerfile for the sketch project from [A. Solar-Lezama](https://people.csail.mi
 * https://github.com/asolarlez/sketch-backend
 * https://github.com/asolarlez/sketch-frontend
 
-## Setup
+## Setup (Docker)
 
 ### Build
 ```bash
@@ -14,6 +14,6 @@ or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Build_
 
 ### Run
 ```bash
-docker run -d sketch
+docker run -p 8080:8080 -d sketch
 ```
 or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_

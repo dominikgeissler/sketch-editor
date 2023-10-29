@@ -10,7 +10,7 @@
         {
             "label": "Docker Run",
             "type": "shell",
-            "command": "docker run -d sketch",
+            "command": "docker run -p 8080:8080 -d sketch",
             "problemMatcher": []
         }
     ]

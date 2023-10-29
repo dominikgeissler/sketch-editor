@@ -1,5 +1,5 @@
 # Can prob. use a more lightweight image
-FROM ubuntu as BASE
+FROM ubuntu as SKETCH
 
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
@@ -25,4 +25,19 @@ ENV SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
 
 RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
 
-CMD ["bash", "-c", "--", "while true; do sleep 30; done"]
+# -- Simple server setup --
+
+# nodejs stuff
+RUN apt-get update && apt-get -y upgrade && apt-get install -y nodejs npm
+RUN npm install -g n
+RUN n latest
+
+COPY src /home/app
+
+WORKDIR /home/app
+
+RUN npm install
+
+EXPOSE 8080
+
+CMD ["node", "server.js"]

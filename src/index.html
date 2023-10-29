@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addOptions = (files) => {
+                const select = document.getElementById("example-select");
+                files.forEach((f) => {
+                    const option = document.createElement("option");
+                    option.value = f;
+                    option.text = f;
+                    select.appendChild(option);
+                });
+            }
+
+            // Get all examples in the /examples folder
+            fetch("/examples")
+                .then((res) => res.json())
+                .then((data) => addOptions(data))
+                .catch((err) => console.error("Error: ", err))
+        });
+    </script>
+    <title>Sketch Editor</title>
+</head>
+
+<body>
+    <header>
+        Sketch Editor
+    </header>
+    <div id="editor">
+        <button id="run">Run</button>
+        <button id="example">Load Example</button>
+        <select id="example-select">
+            <option value="" disabled selected>Select an example to load...</option>
+        </select>
+        <textarea id="code" placeholder="Your code goes here..."></textarea>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const setLoading = () => {
+            document.body.classList.add("loading");
+            document.getElementById("code").classList.add("loading");
+            document.getElementById("run").disabled = true;
+            document.getElementById("example").disabled = true;
+            document.getElementById("example-select").disabled = true;
+        }
+
+        const unsetLoading = () => {
+            document.body.classList.remove("loading");
+            document.getElementById("code").classList.remove("loading");
+            document.getElementById("run").disabled = false;
+            document.getElementById("example").disabled = false;
+            document.getElementById("example-select").disabled = false;
+        }
+
+        const code = document.getElementById("code");
+        code.addEventListener("keydown", (e) => {
+            // Enable tabs in the code area
+            if (e.key === "Tab") {
+                e.preventDefault()
+
+                // Insert a \t character
+                const start = code.selectionStart;
+                const end = code.selectionEnd;
+                const value = code.value;
+                code.value = value.substring(0, start) + '\t' + value.substring(end);
+                code.selectionStart = code.selectionEnd = start + 1;
+            }
+        });
+
+        const runButton = document.getElementById("run");
+        runButton.addEventListener("click", async (e) => {
+            let codeContent = document.getElementById("code").value
+            let loader = document.getElementById("loader");
+
+            setLoading();
+            await fetch("/", {
+                method: "POST",
+                body: `code=${encodeURIComponent(codeContent)}`,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            }).then(res => res.text())
+                .then(data => document.getElementById("output").innerHTML = `<pre>${data.replace(/\n/g, "<br>")}`)
+                .catch(err => console.error("Error: ", error))
+            unsetLoading();
+        });
+
+
+        const loadExamplesButton = document.getElementById("example");
+        loadExamplesButton.addEventListener("click", (e) => {
+            const exampleSelect = document.getElementById("example-select");
+            const code = document.getElementById("code");
+            let file = exampleSelect.value;
+            if (!!file) {
+                fetch("/load-example", {
+                    method: "POST",
+                    body: `selectedFile=${encodeURIComponent(file)}`,
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                }).then((res) => res.text())
+                    .then((data) => {
+                        code.value = data;
+                    })
+                    .catch((err) => console.error("Error:", err))
+            }
+        });
+    </script>
+</body>
+
+</html>
