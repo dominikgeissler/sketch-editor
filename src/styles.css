@@ -46,6 +46,32 @@ header .h1 {
   width: 100%;
 }
 
+select {
+  color: #000;
+  cursor: pointer;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #d9d9d9;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+  -webkit-appearance: none;
+  appearance: none;
+  background-position-x: 244px;
+  width: 268px;
+}
+
+select:hover {
+  background-color: #e1e1e1;
+}
+
+select option {
+  background-color: #bdbdbd;
+}
+
+select option:hover {
+  color: #353535;
+}
+
 button {
   color: #fff;
   cursor: pointer;
