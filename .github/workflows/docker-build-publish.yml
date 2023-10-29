@@ -1,4 +1,4 @@
-name: Docker Build Image & Publish
+name: Publish Image to GitHub package registry
 
 on:
   # TODO comment back in
@@ -12,7 +12,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-publish:
+  publish-to-registry:
     runs-on: ubuntu-latest
 
     permissions:
