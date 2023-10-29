@@ -4,7 +4,7 @@ FROM ubuntu as BASE
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get install -y curl build-essential flex bison tar && \
+    apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
@@ -19,8 +19,10 @@ RUN cd /home/sketch/sketch-backend && \
     bash configure && \
     make
 
-# Set up environmental variables
-RUN export PATH="$PATH:/home/sketch/sketch-frontend" && \
-    export SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
+# Set up environmental variables and aliases
+ENV PATH="${PATH}:/home/sketch/sketch-frontend"
+ENV SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
+
+RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
 
 CMD ["bash", "-c", "--", "while true; do sleep 30; done"]
