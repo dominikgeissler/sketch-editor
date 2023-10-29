@@ -1,4 +1,6 @@
 # Sketch-Editor
+[![Docker Build Image](https://github.com/dominikgeissler/sketch-editor/actions/workflows/docker-build.yml/badge.svg?branch=main&event=check_run)](https://github.com/dominikgeissler/sketch-editor/actions/workflows/docker-build.yml)
+
 Dockerized editor for the sketch project from [A. Solar-Lezama](https://people.csail.mit.edu/asolar/).
 
 * https://github.com/asolarlez/sketch-backend
