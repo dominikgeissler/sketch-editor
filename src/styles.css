@@ -95,7 +95,7 @@ button {
 }
 
 #run:disabled:hover {
-  cursor: progress;
+  cursor: auto;
 }
 
 #example {
@@ -111,7 +111,7 @@ button {
 }
 
 #example:disabled:hover {
-  cursor: progress;
+  cursor: auto;
 }
 
 .loading {

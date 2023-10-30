@@ -35,7 +35,7 @@
   </header>
   <div id="editor">
     <button id="run">Run</button>
-    <button id="example">Load Example</button>
+    <button id="example" disabled>Load Example</button>
     <select id="example-select">
       <option value="" disabled selected>Select an example to load...</option>
     </select>
@@ -46,8 +46,11 @@
   <script>
     // Sets visual loading by disabling buttons and setting the cursor
     const setLoading = () => {
+      // Add the loading class to display progress cursor
       document.body.classList.add("loading");
       document.getElementById("code").classList.add("loading");
+
+      // Disable the buttons
       document.getElementById("run").disabled = true;
       document.getElementById("example").disabled = true;
       document.getElementById("example-select").disabled = true;
@@ -55,8 +58,11 @@
 
     // Unsets the visual loading
     const unsetLoading = () => {
+      // Remove loading class
       document.body.classList.remove("loading");
       document.getElementById("code").classList.remove("loading");
+
+      // Enable the buttons
       document.getElementById("run").disabled = false;
       document.getElementById("example").disabled = false;
       document.getElementById("example-select").disabled = false;
@@ -76,6 +82,12 @@
         code.value = value.substring(0, start) + '\t' + value.substring(end);
         code.selectionStart = code.selectionEnd = start + 1;
       }
+    });
+
+    // ## Select ##
+    // Disable the button if no example is selected
+    document.getElementById("example-select").addEventListener("change", (e) => {
+      document.getElementById("example").disabled = e.target.value === "";
     });
 
     // ###########
