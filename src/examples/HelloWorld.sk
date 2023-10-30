@@ -1,4 +1,4 @@
 harness void main(int x) {
-    int y = x * ??;
-    assert y == x + x;
+  int y = x * ??;
+  assert y == x + x;
 }
