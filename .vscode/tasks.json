@@ -1,17 +1,24 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Docker Build",
-            "type": "shell",
-            "command": "docker build . -t sketch",
-            "problemMatcher": []
-        },
-        {
-            "label": "Docker Run",
-            "type": "shell",
-            "command": "docker run -p 8080:8080 -d sketch",
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docker Build",
+      "type": "shell",
+      "command": "docker build . -t sketch",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker Run",
+      "type": "shell",
+      "command": "docker run -p 8080:8080 -d sketch",
+      "problemMatcher": []
+    },
+    // Start just the server without docker
+    {
+      "label": "Start server",
+      "type": "shell",
+      "command": "node src/server.js",
+      "problemMatcher": []
+    }
+  ]
 }
