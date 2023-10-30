@@ -1,9 +1,6 @@
 name: publish to github packages
 on:
-  # TODO comment back in
-  # push:
-  #   branches: ["main"]
-  pull_request:
+  push:
     branches: ["main"]
 
 env:
