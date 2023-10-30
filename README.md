@@ -7,9 +7,14 @@ Dockerized editor for the sketch project from [A. Solar-Lezama](https://people.c
 * https://github.com/asolarlez/sketch-frontend
 
 
-
 ## Setup (Docker)
+Run the docker container
 
+```bash
+docker run --rm -p 8080:8080 ghcr.io/dominikgeissler/sketch-editor
+```
+
+## Setup (Docker, locally)
 ### Build
 ```bash
 docker build . -t sketch-editor
