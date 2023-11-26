@@ -34,11 +34,13 @@
     Sketch Editor
   </header>
   <div id="editor">
-    <button id="run">Run</button>
-    <button id="example" disabled>Load Example</button>
-    <select id="example-select">
-      <option value="" disabled selected>Select an example to load...</option>
-    </select>
+    <div id="button-container">
+      <button id="run">Run</button>
+      <button id="example" disabled>Load Example</button>
+      <select id="example-select">
+        <option value="" disabled selected>Select an example to load...</option>
+      </select>
+    </div>
     <textarea id="code" placeholder="Your code goes here..."></textarea>
     <div id="output" hidden></div>
   </div>
@@ -103,7 +105,7 @@
 
     const code = document.getElementById("code");
 
-    // Enable tabs in the code area
+    // Some UX improvements for using the "code editor"
     code.addEventListener("keydown", (e) => {
       if (e.key === "Tab") {
         e.preventDefault()
@@ -114,6 +116,56 @@
         const value = code.value;
         code.value = value.substring(0, start) + '\t' + value.substring(end);
         code.selectionStart = code.selectionEnd = start + 1;
+      }
+      // When '{' is inserted, automatically insert a '}' as well and move the cursor
+      else if (e.key === "{") {
+        e.preventDefault()
+
+        const start = code.selectionStart;
+        const end = code.selectionEnd;
+        const value = code.value;
+        code.value = value.substring(0, start) + '{' + value.substring(end) + '}';
+        code.selectionStart = code.selectionEnd = start + 1;
+      }
+      // When '(' is inserted, automatically insert a ')' as well and move the cursor
+      else if (e.key === "(") {
+        e.preventDefault()
+
+        const start = code.selectionStart;
+        const end = code.selectionEnd;
+        const value = code.value;
+        code.value = value.substring(0, start) + '(' + value.substring(end) + ')';
+        code.selectionStart = code.selectionEnd = start + 1;
+      }
+      // When '[' is inserted, automatically insert a ']' as well and move the cursor
+      else if (e.key === "[") {
+        e.preventDefault()
+
+        const start = code.selectionStart;
+        const end = code.selectionEnd;
+        const value = code.value;
+        code.value = value.substring(0, start) + '[' + value.substring(end) + ']';
+        code.selectionStart = code.selectionEnd = start + 1;
+      }
+      // If backspace is pressed if the cursor is in between two brackets, remove both
+      else if (e.key === "Backspace") {
+        const start = code.selectionStart;
+        const end = code.selectionEnd;
+        const value = code.value;
+
+        if (value[start - 1] === "{" && value[end] === "}") {
+          e.preventDefault();
+          code.value = value.substring(0, start - 1) + value.substring(end + 1);
+          code.selectionStart = code.selectionEnd = start - 1;
+        } else if (value[start - 1] === "(" && value[end] === ")") {
+          e.preventDefault();
+          code.value = value.substring(0, start - 1) + value.substring(end + 1);
+          code.selectionStart = code.selectionEnd = start - 1;
+        } else if (value[start - 1] === "[" && value[end] === "]") {
+          e.preventDefault();
+          code.value = value.substring(0, start - 1) + value.substring(end + 1);
+          code.selectionStart = code.selectionEnd = start - 1;
+        }
       }
     });
 
@@ -160,6 +212,7 @@
         // Reset selected example
         exampleSelect.value = "";
 
+        // Set the visual loading
         setLoading();
 
         // Get the selected examples' code from the server
@@ -174,6 +227,7 @@
             code.value = data;
           })
           .catch((err) => console.error("Error:", err))
+        // Unset the visual loading
         unsetLoading();
 
         // Disable the button again
