@@ -124,7 +124,7 @@
         const start = code.selectionStart;
         const end = code.selectionEnd;
         const value = code.value;
-        code.value = value.substring(0, start) + '{' + value.substring(end) + '}';
+        code.value = value.substring(0, start) + '{' + '}' + value.substring(end);
         code.selectionStart = code.selectionEnd = start + 1;
       }
       // When '(' is inserted, automatically insert a ')' as well and move the cursor
@@ -134,7 +134,7 @@
         const start = code.selectionStart;
         const end = code.selectionEnd;
         const value = code.value;
-        code.value = value.substring(0, start) + '(' + value.substring(end) + ')';
+        code.value = value.substring(0, start) + '(' + ')' + value.substring(end);
         code.selectionStart = code.selectionEnd = start + 1;
       }
       // When '[' is inserted, automatically insert a ']' as well and move the cursor
@@ -144,7 +144,7 @@
         const start = code.selectionStart;
         const end = code.selectionEnd;
         const value = code.value;
-        code.value = value.substring(0, start) + '[' + value.substring(end) + ']';
+        code.value = value.substring(0, start) + '[' + ']' + value.substring(end);
         code.selectionStart = code.selectionEnd = start + 1;
       }
       // If backspace is pressed if the cursor is in between two brackets, remove both
