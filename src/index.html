@@ -40,7 +40,7 @@
       <option value="" disabled selected>Select an example to load...</option>
     </select>
     <textarea id="code" placeholder="Your code goes here..."></textarea>
-    <div id="output"></div>
+    <div id="output" hidden></div>
   </div>
 
   <script>
@@ -66,6 +66,39 @@
       document.getElementById("run").disabled = false;
       document.getElementById("example").disabled = false;
       document.getElementById("example-select").disabled = false;
+    }
+
+    // Correctly renders console output with colors that are encoded by ANSI codes
+    const renderText = (txt) => {
+      let ansiRegex = /\[\d+;\d+m/g;
+
+      // First, replace the \n by br tags
+      let htmlText = txt.replace(/\n/g, "<br>")
+
+      htmlText = txt.replace(ansiRegex, m => {
+        // Retrieve the code and split it to obtain style and color
+        let colorCode = m.slice(1, -1);
+        let [style, color] = colorCode.split(";");
+
+        let cssClass = "";
+
+        // Color code <-> class
+        switch (color) {
+          case "31":
+            cssClass = "red";
+            break;
+          case "32":
+            cssClass = "green";
+            break;
+          default:
+            break;
+        }
+
+        return `<span class="${cssClass}">`;
+      });
+
+      // Close span tags
+      return htmlText.replace(/\[0m/g, '</span>')
     }
 
     const code = document.getElementById("code");
@@ -97,7 +130,8 @@
     // Run the program
     document.getElementById("run").addEventListener("click", async (e) => {
       let codeContent = document.getElementById("code").value
-      let loader = document.getElementById("loader");
+
+      document.getElementById("output").innerHTML = "";
 
       // Set the visual loading
       setLoading();
@@ -111,9 +145,10 @@
           "Content-Type": "application/x-www-form-urlencoded"
         }
       }).then(res => res.text())
-        .then(data => document.getElementById("output").innerHTML = `<pre>${data.replace(/\n/g, "<br>")}`)
-        .catch(err => console.error("Error: ", error))
+        .then(data => document.getElementById("output").innerHTML = `<pre>${renderText(data)}`)
+        .catch(err => console.error("Error: ", err))
       unsetLoading();
+      document.getElementById("output").hidden = false;
     });
 
     // Load an example
@@ -124,6 +159,8 @@
       if (!!file) {
         // Reset selected example
         exampleSelect.value = "";
+
+        setLoading();
 
         // Get the selected examples' code from the server
         fetch("/load-example", {
@@ -137,6 +174,10 @@
             code.value = data;
           })
           .catch((err) => console.error("Error:", err))
+        unsetLoading();
+
+        // Disable the button again
+        document.getElementById("example").disabled = true;
       }
     });
   </script>

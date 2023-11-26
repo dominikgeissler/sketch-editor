@@ -5,7 +5,6 @@ body {
   font-family: Verdana, sans-serif;
 }
 
-
 header {
   background-color: #723232;
   color: #fff;
@@ -34,12 +33,13 @@ textarea {
 
 #code {
   font-family: 'Courier New', monospace;
-  width: 100%;
-  height: 200px;
+  width: 90%;
+  height: 250px;
   border: 1px solid #2c2c2c;
   padding: 10px;
   resize: none;
   outline: none;
+  padding-left: 30px;
 }
 
 #output {
@@ -122,4 +122,14 @@ button {
 
 .loading {
   cursor: progress;
+}
+
+/* Classes for rendering ANSI color codes */
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }
