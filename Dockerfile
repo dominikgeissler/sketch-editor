@@ -4,7 +4,9 @@ FROM ubuntu:latest as SKETCH
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
+  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk nodejs npm && \
+  npm install -g n && \
+  n latest && \
   rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
@@ -28,12 +30,6 @@ RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bas
 # -- Simple server setup --
 
 # nodejs stuff
-
-# Install latest nodejs and npm in alpine and update npm
-RUN apk update && apk upgrade && \
-  apk add --no-cache nodejs npm && \
-  npm install -g n && \
-  n latest
 
 COPY src /home/app
 
