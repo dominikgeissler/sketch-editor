@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "formidable": "^3.5.1"
+    "formidable": "^3.5.1",
+    "codemirror": "^5.48.4"
   }
 }

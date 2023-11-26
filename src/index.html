@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <!-- Import CodeMirror for Syntax Highlighting -->
+  <script src="https://codemirror.net/lib/codemirror.js"></script>
+  <script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+  <script src="lib/sketchLanguage.js"></script>
   <script>
     // Load all programs in the /examples folder and add them as selectable options
     // into the select-dropdown
@@ -24,6 +28,26 @@
         .then((res) => res.json())
         .then((data) => addOptions(data))
         .catch((err) => console.error("Error: ", err))
+    });
+
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      mode: "sketch",
+      theme: "material",
+      indentUnit: 2,
+      indentWithTabs: true,
+      tabSize: 2,
+      lineWrapping: true,
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      styleActiveLine: true,
+      scrollbarStyle: "overlay",
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Enter": () => {
+          document.getElementById("run").click();
+        }
+      }
     });
   </script>
   <title>Sketch Editor</title>
@@ -46,6 +70,27 @@
   </div>
 
   <script>
+
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      mode: "sketch",
+      theme: "material",
+      indentUnit: 2,
+      indentWithTabs: true,
+      tabSize: 2,
+      lineWrapping: true,
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      styleActiveLine: true,
+      scrollbarStyle: "overlay",
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "Ctrl-Enter": () => {
+          document.getElementById("run").click();
+        }
+      }
+    });
+
     // Sets visual loading by disabling buttons and setting the cursor
     const setLoading = () => {
       // Add the loading class to display progress cursor
