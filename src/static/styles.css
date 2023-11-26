@@ -22,6 +22,8 @@ textarea {
   -moz-tab-size: 2;
 }
 
+
+
 #editor {
   display: flex;
   flex-direction: column;
