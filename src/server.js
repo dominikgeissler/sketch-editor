@@ -61,6 +61,7 @@ const simpleServer = http.createServer(
       req.on("end", () => {
         const selectedFile = decodeURIComponent(body.split("=")[1]);
         const filePath = path.join("examples", selectedFile);
+        console.log(`Extracting file: ${filePath}`)
 
         fs.readFile(filePath, "utf8", (err, data) => {
           if (!!err) {
@@ -79,7 +80,6 @@ const simpleServer = http.createServer(
       // Execute code
     } else if (req.method === "POST" && req.url === "/") {
       const form = new formidable.IncomingForm();
-      console.log("Form: " + form)
       form.parse(req, (err, fields) => {
         if (!!err) {
           res.writeHead(500, {
@@ -87,9 +87,11 @@ const simpleServer = http.createServer(
           });
           res.end("Internal Server Error");
         } else {
+          console.log("Valid form received.")
           // Extract the code
           const content = fields.code.join("\n");
-          const filePath = path.join(__dirname, `tmp-${Date.now()}.sk`);
+          console.debug(content);
+          const filePath = path.join(__dirname, `tmp - ${Date.now()}.sk`);
 
           fs.writeFile(filePath, content, (err) => {
             if (!!err) {
@@ -100,6 +102,7 @@ const simpleServer = http.createServer(
             } else {
               // Execute the command
               // Capture the output and return it
+              console.log("Executing sketch...")
               exec(`sketch ${filePath}`, (err, stdout, stderr) => {
                 if (!!err) {
                   console.error(`Error: ${err.message}`)
