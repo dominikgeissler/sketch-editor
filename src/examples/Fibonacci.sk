@@ -1,0 +1,12 @@
+int fib(int n) {
+	if(n <= ??) {
+		return {| (n | ??) |};
+	}
+	return fib(n - ??) + fib(n - ??);
+}
+
+harness void main() {
+	assert fib(0) == 0;
+	assert fib(1) == 1;
+	assert fib(2) == 1;
+}
