@@ -8,7 +8,7 @@ const path = require('path');
 const formidable = require('formidable');
 const { exec } = require('child_process');
 
-let lastFile = null;
+let lastFile = null
 
 /**
  * Helper function to obtain the Content-Type by file extension
