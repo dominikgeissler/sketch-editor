@@ -1,0 +1,13 @@
+int W = 32;
+
+void swap(ref bit[W] x, ref bit[W] y){
+  if(??) { x = x ^ y; } else { y = x ^ y; }
+  if(??) { x = x ^ y; } else { y = x ^ y; }
+  if(??) { x = x ^ y; } else { y = x ^ y; }
+}
+
+harness void main(bit[W] x, bit[W] y){
+  bit[W] xold = x, yold = y;
+  swap(x,y);
+  assert y == xold && x == yold;
+}

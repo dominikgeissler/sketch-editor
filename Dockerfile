@@ -1,17 +1,19 @@
-# Can prob. use a more lightweight image
+# Use a more lightweight image
 FROM ubuntu as SKETCH
 
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
+  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk nodejs npm && \
+  npm install -g n && \
+  n latest && \
   rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
 RUN curl -o tmp/sketch.tar.gz https://people.csail.mit.edu/asolar/sketch-1.7.6.tar.gz && \
-  tar -xzvf /tmp/sketch.tar.gz -C /tmp && \
-  mv /tmp/sketch-1.7.6 /home/sketch && \
-  rm /tmp/sketch.tar.gz /home/sketch/README
+  tar -xzf tmp/sketch.tar.gz -C /tmp && \
+  rm /tmp/sketch.tar.gz /tmp/sketch-1.7.6/README && \
+  mv /tmp/sketch-1.7.6 /home/sketch
 
 # Install sketch (steps from the README)
 RUN cd /home/sketch/sketch-backend && \
@@ -28,9 +30,6 @@ RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bas
 # -- Simple server setup --
 
 # nodejs stuff
-RUN apt-get update && apt-get -y upgrade && apt-get install -y nodejs npm
-RUN npm install -g n
-RUN n latest
 
 COPY src /home/app
 
@@ -40,4 +39,4 @@ RUN npm install
 
 EXPOSE 8080
 
-CMD ["node", "server.js"]
+CMD ["node", "lib/server.js"]

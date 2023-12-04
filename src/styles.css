@@ -5,7 +5,6 @@ body {
   font-family: Verdana, sans-serif;
 }
 
-
 header {
   background-color: #723232;
   color: #fff;
@@ -17,23 +16,49 @@ header .h1 {
   margin: 0;
 }
 
+/* Set tab size = 2 */
+textarea {
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
 #editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0 10%;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  align-items: center;
+}
+
+#button-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+
+#editor button,
+#editor select {
+  margin-bottom: 10px;
 }
 
 #code {
   font-family: 'Courier New', monospace;
   width: 100%;
-  height: 200px;
+  height: 250px;
+  margin: auto;
   border: 1px solid #2c2c2c;
   padding: 10px;
   resize: none;
   outline: none;
+  box-sizing: border-box;
+  overflow: auto;
+  margin-bottom: 20px;
 }
 
 #output {
@@ -46,6 +71,7 @@ header .h1 {
   min-height: 100px;
   max-height: 70vh;
   width: 100%;
+  box-sizing: border-box;
 }
 
 select {
@@ -74,6 +100,40 @@ select option:hover {
   color: #353535;
 }
 
+button.action:enabled {
+  background-color: rgb(13, 13, 148);
+}
+
+button.action:enabled:hover {
+  background-color: #0056b3;
+}
+
+button.confirm:enabled {
+  background-color: green;
+}
+
+button.confirm:enabled:hover {
+  background-color: rgb(1, 182, 1);
+}
+
+button.danger:enabled {
+  background-color: darkred;
+}
+
+button.danger:enabled:hover {
+  background-color: rgb(203, 0, 0);
+}
+
+#right-button-container {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+#download-output {
+  margin-top: 20px;
+}
+
 button {
   color: #fff;
   cursor: pointer;
@@ -82,38 +142,24 @@ button {
   border-radius: 5px;
 }
 
-#run {
-  background-color: rgb(13, 13, 148);
-}
-
-#run:hover {
-  background-color: #0056b3;
-}
-
-#run:disabled {
+button:disabled {
   background-color: grey;
 }
 
-#run:disabled:hover {
-  cursor: progress;
-}
-
-#example {
-  background-color: green;
-}
-
-#example:hover {
-  background-color: rgb(1, 182, 1);
-}
-
-#example:disabled {
-  background-color: grey;
-}
-
-#example:disabled:hover {
-  cursor: progress;
+button:disabled:hover {
+  cursor: auto;
 }
 
 .loading {
   cursor: progress;
+}
+
+/* Classes for rendering ANSI color codes */
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
 }
