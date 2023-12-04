@@ -122,7 +122,6 @@ const simpleServer = http.createServer(
           res.end('File does not exist.');
           return;
         }
-
         console.debug(`Loading file: ${filePath}`);
         // Load file
         fs.readFile(filePath, 'utf8', (err, data) => {
