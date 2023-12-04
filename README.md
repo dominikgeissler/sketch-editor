@@ -1,5 +1,6 @@
 # sketch-editor
 [![image](https://github.com/dominikgeissler/sketch-editor/actions/workflows/docker-build.yml/badge.svg?branch=main)](https://github.com/dominikgeissler/sketch-editor/actions/workflows/docker-build.yml)
+[![eslint](https://github.com/dominikgeissler/sketch-editor/actions/workflows/eslint.yml/badge.svg?branch=main)](https://github.com/dominikgeissler/sketch-editor/actions/workflows/eslint.yml)
 
 Dockerized editor for the sketch project from [A. Solar-Lezama](https://people.csail.mit.edu/asolar/).
 
