@@ -1,12 +1,14 @@
 {
   "version": "2.0.0",
   "tasks": [
+    // Build the docker image
     {
       "label": "Docker Build",
       "type": "shell",
       "command": "docker build . -t sketch",
       "problemMatcher": []
     },
+    // Run the docker container at port 8080
     {
       "label": "Docker Run",
       "type": "shell",
@@ -17,7 +19,7 @@
     {
       "label": "Start server",
       "type": "shell",
-      "command": "node src/server.js",
+      "command": "node src/lib/server.js",
       "problemMatcher": []
     }
   ]

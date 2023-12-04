@@ -1,5 +1,5 @@
 # Use a more lightweight image
-FROM ubuntu:latest as SKETCH
+FROM ubuntu as SKETCH
 
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
@@ -39,4 +39,4 @@ RUN npm install
 
 EXPOSE 8080
 
-CMD ["node", "server.js"]
+CMD ["node", "lib/server.js"]

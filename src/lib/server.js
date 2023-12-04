@@ -61,8 +61,8 @@ const simpleServer = http.createServer(
       req.on("end", () => {
         const selectedFile = decodeURIComponent(body.split("=")[1]);
         const filePath = path.join("examples", selectedFile);
-        console.log(`Extracting file: ${filePath}`)
-
+        console.debug(`Loading file: ${filePath}`)
+        // Load file
         fs.readFile(filePath, "utf8", (err, data) => {
           if (!!err) {
             res.writeHead(500, {
@@ -92,7 +92,7 @@ const simpleServer = http.createServer(
           const content = fields.code.join("\n");
           console.debug(content);
           const filePath = path.join(__dirname, `tmp - ${Date.now()}.sk`);
-
+          // Save the code to a file
           fs.writeFile(filePath, content, (err) => {
             if (!!err) {
               res.writeHead(500, {
