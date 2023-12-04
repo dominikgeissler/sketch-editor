@@ -1,0 +1,16 @@
+name: eslint
+
+on: push
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install --prefix src
+      - name: Lint with ESLint
+        run: npm run lint --prefix src
