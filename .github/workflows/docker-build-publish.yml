@@ -4,7 +4,6 @@ on:
   release:
     types: [published]
 
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
