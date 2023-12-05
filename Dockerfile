@@ -31,7 +31,7 @@ RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bas
 
 # nodejs stuff
 
-COPY src /home/app
+COPY . /home/app
 
 WORKDIR /home/app
 
@@ -39,4 +39,4 @@ RUN npm install
 
 EXPOSE 8080
 
-CMD ["node", "lib/server.js"]
+CMD ["node", "src/lib/server.js"]
