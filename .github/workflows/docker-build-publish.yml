@@ -1,7 +1,9 @@
 name: publish to github packages
 on:
-  push:
-    branches: ["main"]
+  release:
+    types: [published]
+  workflow_dispatch:
+
 
 env:
   REGISTRY: ghcr.io
