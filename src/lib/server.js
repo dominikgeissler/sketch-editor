@@ -27,22 +27,23 @@ const simpleServer = http.createServer(
         }
       });
       // styles
-    } else if (req.method === 'GET' && req.url === '/styles.css') {
+    } else if (req.method === 'GET' && req.url === '/static/styles.css') {
       console.debug('Loading styles.css...');
-      fs.readFile(path.resolve(__dirname, '../styles.css'), (err, data) => {
-        if (!!err) {
-          res.writeHead(500, {
-            'Content-Type': 'text/plain',
-          });
-          console.error('Error while loading styles.css', err);
-          res.end('Internal Server Error');
-        } else {
-          res.writeHead(200, {
-            'Content-Type': 'text/css',
-          });
-          res.end(data);
-        }
-      });
+      fs.readFile(path.resolve(__dirname, '../static/styles.css'),
+        (err, data) => {
+          if (!!err) {
+            res.writeHead(500, {
+              'Content-Type': 'text/plain',
+            });
+            console.error('Error while loading styles.css', err);
+            res.end('Internal Server Error');
+          } else {
+            res.writeHead(200, {
+              'Content-Type': 'text/css',
+            });
+            res.end(data);
+          }
+        });
       // List of examples
     } else if (req.method === 'GET' && req.url === '/examples') {
       console.debug('Loading examples...');
@@ -88,6 +89,26 @@ const simpleServer = http.createServer(
           }
         });
       });
+      // Get JavaScript file
+    } else if (req.method == 'GET' && req.url.startsWith('/lib/')) {
+      const fileName = req.url.split('/lib/').pop();
+      console.debug(`Requested: ${fileName}`);
+      console.debug('Loading file...');
+      fs.readFile(path.resolve(__dirname, `../lib/${fileName}`),
+        (err, data) => {
+          if (!!err) {
+            res.writeHead(500, {
+              'Content-Type': 'text/plain',
+            });
+            console.error(`Error while loading file: ${fileName}`, err);
+            res.end('Internal Server Error');
+          } else {
+            res.writeHead(200, {
+              'Content-Type': 'text/javascript',
+            });
+            res.end(data);
+          }
+        });
       // Execute code
     } else if (req.method === 'POST' && req.url === '/') {
       console.debug('Executing code request recieved...');
@@ -120,7 +141,7 @@ const simpleServer = http.createServer(
               lastFile = fileName;
               console.log('Executing sketch...');
               exec(
-                `sketch ${filePath} --fe-tempdir` +
+                `sketch ${filePath} --fe-tempdir ` +
                 `${path.resolve(__dirname, 'd_' + fileName)}`,
                 (err, stdout, stderr) => {
                   if (!!err) {
