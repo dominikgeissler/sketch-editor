@@ -8,6 +8,13 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "start": "node src/lib/server.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix .",
+      "git add"
+    ]
   }
 }
