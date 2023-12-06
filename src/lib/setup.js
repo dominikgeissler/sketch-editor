@@ -1,3 +1,7 @@
+/**
+ * @fileoverview This file contains the setup for the example select-dropdown.
+ */
+
 // Load all programs in the /examples folder and add them as selectable options
 // into the select-dropdown
 document.addEventListener('DOMContentLoaded', () => {

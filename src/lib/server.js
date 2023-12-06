@@ -1,4 +1,7 @@
-// Small server to handle files
+/**
+ * @fileoverview Small server to handle user requests and interact with SKETCH.
+ */
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -27,7 +30,7 @@ const getContentType = (extension) => {
 
 const simpleServer = http.createServer(
   (req, res) => {
-    // index.html
+    // File or folder requested
     if (req.method === 'GET') {
       const reqArgs = req.url.split('/');
       let fileName = reqArgs.pop();
@@ -86,6 +89,7 @@ const simpleServer = http.createServer(
           });
       }
     } else if (req.method === 'POST' && req.url === '/load-example') {
+      // Load specific example
       console.debug('Loading specific example...');
       let body = '';
       req.on('data', (c) => {
@@ -113,6 +117,7 @@ const simpleServer = http.createServer(
         });
       });
     } else if (req.method === 'POST' && req.url === '/') {
+      // Execute code request
       console.debug('Executing code request recieved...');
       const form = new formidable.IncomingForm();
       form.parse(req, (err, fields) => {
@@ -168,8 +173,8 @@ const simpleServer = http.createServer(
           });
         }
       });
-      // Download last file + generated output files
     } else if (req.method === 'POST' && req.url === '/download-output') {
+      // Download last file + generated output files
       console.debug('Downloading output...');
       if (!!lastFile) {
         /*
@@ -258,8 +263,8 @@ const simpleServer = http.createServer(
         });
         res.end('Not found');
       }
-      // Not found
     } else {
+      // Not found
       console.debug(`Not found ${req.method} ${req.url}`);
       res.writeHead(404, {
         'Content-Type': 'text/plain',

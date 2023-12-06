@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Handles the client-side logic of the editor.
+ */
+
 
 /*
   TODO:
