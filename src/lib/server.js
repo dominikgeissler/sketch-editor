@@ -7,61 +7,84 @@ const { exec } = require('child_process');
 
 let lastFile = null;
 
+/**
+ * Helper function to obtain the Content-Type by file extension
+ * @param {string} extension
+ * @return {string} The Content-Type
+ */
+const getContentType = (extension) => {
+  switch (extension) {
+  case 'css':
+    return 'text/css';
+  case 'js':
+    return 'text/javascript';
+  case 'html':
+    return 'text/html';
+  default:
+    return 'text/plain';
+  }
+};
+
 const simpleServer = http.createServer(
   (req, res) => {
     // index.html
-    if (req.method === 'GET' && req.url === '/') {
-      console.debug('Loading index.html...');
+    if (req.method === 'GET') {
+      const reqArgs = req.url.split('/');
+      let fileName = reqArgs.pop();
 
-      fs.readFile(path.resolve(__dirname, '../index.html'), (err, data) => {
-        if (!!err) {
-          res.writeHead(500, {
-            'Content-Type': 'text/plain',
-          });
-          res.end('Internal Server Error');
-        } else {
-          res.writeHead(200, {
-            'Content-Type': 'text/html',
-          });
-          res.end(data);
-        }
-      });
-      // styles
-    } else if (req.method === 'GET' && req.url === '/static/styles.css') {
-      console.debug('Loading styles.css...');
-      fs.readFile(path.resolve(__dirname, '../static/styles.css'),
-        (err, data) => {
-          if (!!err) {
-            res.writeHead(500, {
-              'Content-Type': 'text/plain',
-            });
-            console.error('Error while loading styles.css', err);
-            res.end('Internal Server Error');
-          } else {
-            res.writeHead(200, {
-              'Content-Type': 'text/css',
-            });
-            res.end(data);
-          }
+      // index.html is requested with url = "/"
+      if (fileName === '') {
+        fileName = 'index.html';
+      }
+
+      if (!fileName) {
+        res.writeHead(500, {
+          'Content-Type': 'text/plain',
         });
-      // List of examples
-    } else if (req.method === 'GET' && req.url === '/examples') {
-      console.debug('Loading examples...');
-      fs.readdir(path.resolve(__dirname, '../examples'), (err, files) => {
-        if (!!err) {
-          res.writeHead(500, {
-            'Content-Type': 'text/plain',
+        res.end('Request could not be parsed.');
+      }
+
+      if (fileName.includes('.')) {
+        // File is requested
+        console.debug(`Requested: ${fileName}`);
+        console.debug('Loading file...');
+
+        // Read the file and return it
+        fs.readFile(path.resolve(__dirname, '..', ...reqArgs, fileName),
+          (err, data) => {
+            if (!!err) {
+              res.writeHead(500, {
+                'Content-Type': 'text/plain',
+              });
+              console.error(`Error while loading file: ${fileName}`, err);
+              res.end('Internal Server Error');
+            } else {
+              res.writeHead(200, {
+                'Content-Type': getContentType(fileName.split('.').pop()),
+              });
+              res.end(data);
+            }
           });
-          console.error('Error while loading examples', err);
-          res.end('Internal Server Error');
-        } else {
-          res.writeHead(200, {
-            'Content-Type': 'application/json',
+      } else {
+        // File is a directory, probably to get all items
+        console.debug(`Requested: ${fileName}`);
+        console.debug('Loading folder...');
+        fs.readdir(path.resolve(__dirname, '..', ...reqArgs, fileName),
+          (err, files) => {
+            if (!!err) {
+              res.writeHead(500, {
+                'Content-Type': 'text/plain',
+              });
+              console.error(`Error while loading directory ${fileName}`, err);
+              res.end('Internal Server Error');
+            } else {
+              res.writeHead(200, {
+                'Content-Type': 'application/json',
+              });
+              res.end(JSON.stringify(files));
+            }
           });
-          res.end(JSON.stringify(files));
-        }
-      });
-      // Get specific example
+      }
     } else if (req.method === 'POST' && req.url === '/load-example') {
       console.debug('Loading specific example...');
       let body = '';
@@ -89,27 +112,6 @@ const simpleServer = http.createServer(
           }
         });
       });
-      // Get JavaScript file
-    } else if (req.method == 'GET' && req.url.startsWith('/lib/')) {
-      const fileName = req.url.split('/lib/').pop();
-      console.debug(`Requested: ${fileName}`);
-      console.debug('Loading file...');
-      fs.readFile(path.resolve(__dirname, `../lib/${fileName}`),
-        (err, data) => {
-          if (!!err) {
-            res.writeHead(500, {
-              'Content-Type': 'text/plain',
-            });
-            console.error(`Error while loading file: ${fileName}`, err);
-            res.end('Internal Server Error');
-          } else {
-            res.writeHead(200, {
-              'Content-Type': 'text/javascript',
-            });
-            res.end(data);
-          }
-        });
-      // Execute code
     } else if (req.method === 'POST' && req.url === '/') {
       console.debug('Executing code request recieved...');
       const form = new formidable.IncomingForm();
@@ -167,7 +169,7 @@ const simpleServer = http.createServer(
         }
       });
       // Download last file + generated output files
-    } else if (req.method === 'GET' && req.url === '/download-output') {
+    } else if (req.method === 'POST' && req.url === '/download-output') {
       console.debug('Downloading output...');
       if (!!lastFile) {
         /*

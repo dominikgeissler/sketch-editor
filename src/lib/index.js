@@ -286,7 +286,9 @@ document.getElementById('delete').addEventListener('click', (e) => {
 // Download the output
 document.getElementById('download-output').addEventListener('click', (e) => {
   // Get the output zip archive from the server
-  fetch('/download-output')
+  fetch('/download-output', {
+    method: 'POST',
+  })
     .then((res) => res.blob())
     .then((data) => {
       // Create a link and click it to download the file
