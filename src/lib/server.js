@@ -84,7 +84,6 @@ const simpleServer = http.createServer(
         // File is a directory, probably to get all items
         console.debug(`Requested: ${fileName}`);
         console.debug('Loading folder...');
-
         fs.readdir(path.resolve(__dirname, '..', ...reqArgs, fileName),
           (err, files) => {
             if (!!err) {
