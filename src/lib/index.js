@@ -120,22 +120,50 @@ code.addEventListener('keydown', (e) => {
     code.value = value.substring(0, start) + '[' + ']' + value.substring(end);
     code.selectionStart = code.selectionEnd = start + 1;
 
-    // If backspace is pressed if the cursor is in between two brackets,
+    // When '"' is inserted, automatically insert a '"' as well and move
+    // the cursor
+  } else if (e.key === '"') {
+    e.preventDefault();
+
+    const start = code.selectionStart;
+    const end = code.selectionEnd;
+    const value = code.value;
+    code.value = value.substring(0, start) + '"' + '"' + value.substring(end);
+    code.selectionStart = code.selectionEnd = start + 1;
+    // When "'" is inserted, automatically insert a "'" as well and move
+    // the cursor
+  } else if (e.key === '\'') {
+    e.preventDefault();
+
+    const start = code.selectionStart;
+    const end = code.selectionEnd;
+    const value = code.value;
+    code.value = value.substring(0, start) + '\'' + '\'' + value.substring(end);
+    code.selectionStart = code.selectionEnd = start + 1;
+    // You guessed it: When "`" is inserted, automatically insert a "`" as well
+    // and move the cursor
+  } else if (e.key === '`') {
+    e.preventDefault();
+
+    const start = code.selectionStart;
+    const end = code.selectionEnd;
+    const value = code.value;
+    code.value = value.substring(0, start) + '`' + '`' + value.substring(end);
+    code.selectionStart = code.selectionEnd = start + 1;
+    // If backspace is pressed if the cursor is in between two chars (as above),
     // remove both
   } else if (e.key === 'Backspace') {
     const start = code.selectionStart;
     const end = code.selectionEnd;
     const value = code.value;
 
-    if (value[start - 1] === '{' && value[end] === '}') {
-      e.preventDefault();
-      code.value = value.substring(0, start - 1) + value.substring(end + 1);
-      code.selectionStart = code.selectionEnd = start - 1;
-    } else if (value[start - 1] === '(' && value[end] === ')') {
-      e.preventDefault();
-      code.value = value.substring(0, start - 1) + value.substring(end + 1);
-      code.selectionStart = code.selectionEnd = start - 1;
-    } else if (value[start - 1] === '[' && value[end] === ']') {
+    if (value[start - 1] === '{' && value[end] === '}' ||
+    value[start - 1] === '(' && value[end] === ')' ||
+    value[start - 1] === '[' && value[end] === ']' ||
+    value[start - 1] === '"' && value[end] === '"' ||
+    value[start - 1] === '\'' && value[end] === '\'' ||
+    value[start - 1] === '`' && value[end] === '`'
+    ) {
       e.preventDefault();
       code.value = value.substring(0, start - 1) + value.substring(end + 1);
       code.selectionStart = code.selectionEnd = start - 1;
