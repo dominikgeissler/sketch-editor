@@ -72,91 +72,57 @@ const renderText = (txt) => {
 
 const code = document.getElementById('code');
 
+// TODO Maybe move this to a separate file
 // Some UX improvements for using the "code editor"
 code.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.key === 'Enter') {
-    e.preventDefault();
-    document.getElementById('run').click();
-  } else if (e.key === 'Tab') {
+  const start = code.selectionStart;
+  const end = code.selectionEnd;
+  const value = code.value;
+
+  const keys = ['{', '(', '[', '\'', '"', '`'];
+
+  // Returns the "closing" char for a given key input
+  const keyComplement = (key) => {
+    switch (key) {
+    case '{':
+      return '}';
+    case '(':
+      return ')';
+    case '[':
+      return ']';
+    default:
+      return key;
+    }
+  };
+
+  // Shortcuts
+  if (e.ctrlKey) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('run').click();
+    }
+  }
+
+  if (e.key === 'Tab') {
     e.preventDefault();
 
     // Insert a \t character
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
     code.value = value.substring(0, start) + '\t' + value.substring(end);
     code.selectionStart = code.selectionEnd = start + 1;
 
-    // When '{' is inserted, automatically insert a '}' as well and move
-    // the cursor
-  } else if (e.key === '{') {
+    // When one of the keys is pressed, insert the key and its complement
+  } else if (keys.includes(e.key)) {
     e.preventDefault();
 
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '{' + '}' + value.substring(end);
+    const selectedText = value.substring(start, end) ?? '';
+    code.value = value.substring(0, start) + e.key + selectedText +
+      keyComplement(e.key) + value.substring(end);
     code.selectionStart = code.selectionEnd = start + 1;
 
-    // When '(' is inserted, automatically insert a ')' as well and move
-    // the cursor
-  } else if (e.key === '(') {
-    e.preventDefault();
-
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '(' + ')' + value.substring(end);
-    code.selectionStart = code.selectionEnd = start + 1;
-
-    // When '[' is inserted, automatically insert a ']' as well and move
-    // the cursor
-  } else if (e.key === '[') {
-    e.preventDefault();
-
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '[' + ']' + value.substring(end);
-    code.selectionStart = code.selectionEnd = start + 1;
-
-    // When '"' is inserted, automatically insert a '"' as well and move
-    // the cursor
-  } else if (e.key === '"') {
-    e.preventDefault();
-
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '"' + '"' + value.substring(end);
-    code.selectionStart = code.selectionEnd = start + 1;
-    // When "'" is inserted, automatically insert a "'" as well and move
-    // the cursor
-  } else if (e.key === '\'') {
-    e.preventDefault();
-
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '\'' + '\'' + value.substring(end);
-    code.selectionStart = code.selectionEnd = start + 1;
-    // You guessed it: When "`" is inserted, automatically insert a "`" as well
-    // and move the cursor
-  } else if (e.key === '`') {
-    e.preventDefault();
-
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-    code.value = value.substring(0, start) + '`' + '`' + value.substring(end);
-    code.selectionStart = code.selectionEnd = start + 1;
     // If backspace is pressed if the cursor is in between two chars (as above),
     // remove both
   } else if (e.key === 'Backspace') {
-    const start = code.selectionStart;
-    const end = code.selectionEnd;
-    const value = code.value;
-
+    // Remove both symbols at once
     if (value[start - 1] === '{' && value[end] === '}' ||
     value[start - 1] === '(' && value[end] === ')' ||
     value[start - 1] === '[' && value[end] === ']' ||
