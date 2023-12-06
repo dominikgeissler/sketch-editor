@@ -34,7 +34,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=${{ startsWith(github.ref, 'refs/tags/') && substr(github.ref, 10) || 'latest' }}
+            type=semver,value=${{ raw }}
 
       - name: Build and publish docker image
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
