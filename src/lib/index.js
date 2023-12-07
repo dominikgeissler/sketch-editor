@@ -52,15 +52,15 @@ const renderText = (txt) => {
 
     // Color code <-> class
     switch (color) {
-    case '31':
-      cssClass = 'red';
-      break;
-    case '32':
-      cssClass = 'green';
-      break;
+      case '31':
+        cssClass = 'red';
+        break;
+      case '32':
+        cssClass = 'green';
+        break;
       // ...
-    default:
-      break;
+      default:
+        break;
     }
 
     return `<span class="${cssClass}">`;
@@ -84,14 +84,14 @@ code.addEventListener('keydown', (e) => {
   // Returns the "closing" char for a given key input
   const keyComplement = (key) => {
     switch (key) {
-    case '{':
-      return '}';
-    case '(':
-      return ')';
-    case '[':
-      return ']';
-    default:
-      return key;
+      case '{':
+        return '}';
+      case '(':
+        return ')';
+      case '[':
+        return ']';
+      default:
+        return key;
     }
   };
 
@@ -124,11 +124,11 @@ code.addEventListener('keydown', (e) => {
   } else if (e.key === 'Backspace') {
     // Remove both symbols at once
     if (value[start - 1] === '{' && value[end] === '}' ||
-    value[start - 1] === '(' && value[end] === ')' ||
-    value[start - 1] === '[' && value[end] === ']' ||
-    value[start - 1] === '"' && value[end] === '"' ||
-    value[start - 1] === '\'' && value[end] === '\'' ||
-    value[start - 1] === '`' && value[end] === '`'
+      value[start - 1] === '(' && value[end] === ')' ||
+      value[start - 1] === '[' && value[end] === ']' ||
+      value[start - 1] === '"' && value[end] === '"' ||
+      value[start - 1] === '\'' && value[end] === '\'' ||
+      value[start - 1] === '`' && value[end] === '`'
     ) {
       e.preventDefault();
       code.value = value.substring(0, start - 1) + value.substring(end + 1);
