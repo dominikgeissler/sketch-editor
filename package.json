@@ -4,12 +4,16 @@
   },
   "devDependencies": {
     "eslint": "^8.55.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
   },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "start": "node src/lib/server.js"
+    "start": "node src/lib/server.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "lint-staged": {
     "*.js": [

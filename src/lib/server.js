@@ -17,20 +17,23 @@ let lastFile = null;
  */
 const getContentType = (extension) => {
   switch (extension) {
-  case 'css':
-    return 'text/css';
-  case 'js':
-    return 'text/javascript';
-  case 'html':
-    return 'text/html';
-  default:
-    return 'text/plain';
+    case 'css':
+      return 'text/css';
+    case 'js':
+      return 'text/javascript';
+    case 'html':
+      return 'text/html';
+    case 'ico':
+      return 'image/x-icon';
+    default:
+      return 'text/plain';
   }
 };
 
 const simpleServer = http.createServer(
   (req, res) => {
     // File or folder requested
+    // This is veeerry insecure but convenient
     if (req.method === 'GET') {
       const reqArgs = req.url.split('/');
       let fileName = reqArgs.pop();
@@ -45,6 +48,15 @@ const simpleServer = http.createServer(
           'Content-Type': 'text/plain',
         });
         res.end('Request could not be parsed.');
+      }
+
+      // If file does not exist, return 404
+      if (!fs.existsSync(path.resolve(__dirname, '..', ...reqArgs, fileName))) {
+        res.writeHead(404, {
+          'Content-Type': 'text/plain',
+        });
+        res.end('Not found');
+        return;
       }
 
       if (fileName.includes('.')) {
@@ -72,6 +84,7 @@ const simpleServer = http.createServer(
         // File is a directory, probably to get all items
         console.debug(`Requested: ${fileName}`);
         console.debug('Loading folder...');
+
         fs.readdir(path.resolve(__dirname, '..', ...reqArgs, fileName),
           (err, files) => {
             if (!!err) {
@@ -99,6 +112,17 @@ const simpleServer = http.createServer(
       req.on('end', () => {
         const selectedFile = decodeURIComponent(body.split('=')[1]);
         const filePath = path.resolve(__dirname, '../examples', selectedFile);
+
+        // Check if file exists
+        if (!fs.existsSync(filePath)) {
+          res.writeHead(404, {
+            'Content-Type': 'text/plain',
+          });
+          console.warn(`File does not exist: ${filePath}`);
+          res.end('File does not exist.');
+          return;
+        }
+
         console.debug(`Loading file: ${filePath}`);
         // Load file
         fs.readFile(filePath, 'utf8', (err, data) => {
@@ -195,68 +219,71 @@ const simpleServer = http.createServer(
         */
 
         // Create tar.gz archive with all files
-        exec(`tar -czvf "output.tar.gz" lib/${lastFile}` +
-          ` -C ${'lib/d_' + lastFile} --transform=` +
-          `'s,^./d_${lastFile}/,,' tmp`, (err, stdout, stderr) => {
-          if (!!err) {
-            res.writeHead(500, {
-              'Content-Type': 'text/plain',
-            });
-            console.error(`Error while creating archive: ${err.message}`, err);
-            res.end(`${stderr}`);
-          } else {
-            console.log(`Archive created: ${stdout}`);
-            // Send file
-            res.writeHead(200, {
-              'Content-Type': 'application/gzip',
-              'Content-Disposition': `attachment; filename=output.tar.gz`,
-            });
-
-            // Send the file to client
-            fs.createReadStream(path.resolve(__dirname, '..', 'output.tar.gz'))
-              .pipe(res)
-              .on('finish', () => {
-                console.log('File sent');
-
-                // Remove archive
-                fs.unlink(
-                  path.resolve(__dirname, '..', 'output.tar.gz'),
-                  (err) => {
-                    if (!!err) {
-                      console.error('Error while deleting archive', err);
-                    } else {
-                      console.log('Archive deleted');
-                    }
-                  });
+        // eslint-disable-next-line max-len
+        exec(`tar -czvf "output.tar.gz" lib/${lastFile} -C ${'lib/d_' + lastFile} --transform='s,^./d_${lastFile}/,,' tmp`,
+          (err, stdout, stderr) => {
+            if (!!err) {
+              res.writeHead(500, {
+                'Content-Type': 'text/plain',
+              });
+              console.error(`Error while creating archive: ${err.message}`,
+                err);
+              res.end(`${stderr}`);
+            } else {
+              console.log(`Archive created: ${stdout}`);
+              // Send file
+              res.writeHead(200, {
+                'Content-Type': 'application/gzip',
+                'Content-Disposition': `attachment; filename=output.tar.gz`,
               });
 
-            // Remove tmp files and directory
-            fs.unlink(path.resolve(__dirname, lastFile), (err) => {
-              if (!!err) {
-                console.error('Error while deleting last sketch file', err);
-              } else {
-                console.log('File deleted');
-              }
-            });
+              // Send the file to client
+              fs.createReadStream(
+                path.resolve(__dirname, '..', 'output.tar.gz'),
+              )
+                .pipe(res)
+                .on('finish', () => {
+                  console.log('File sent');
 
-            // Delete directory, if it exists
-            if (fs.existsSync(path.resolve(__dirname, `d_${lastFile}`))) {
-              fs.rm(
-                path.resolve(__dirname, `d_${lastFile}`),
-                { recursive: true }, (err) => {
-                  if (!!err) {
-                    console.error(
-                      'Error while deleting tmp sketch directory',
-                      err);
-                  } else {
-                    console.log('Directory deleted');
-                  }
+                  // Remove archive
+                  fs.unlink(
+                    path.resolve(__dirname, '..', 'output.tar.gz'),
+                    (err) => {
+                      if (!!err) {
+                        console.error('Error while deleting archive', err);
+                      } else {
+                        console.log('Archive deleted');
+                      }
+                    });
                 });
+
+              // Remove tmp files and directory
+              fs.unlink(path.resolve(__dirname, lastFile), (err) => {
+                if (!!err) {
+                  console.error('Error while deleting last sketch file', err);
+                } else {
+                  console.log('File deleted');
+                }
+              });
+
+              // Delete directory, if it exists
+              if (fs.existsSync(path.resolve(__dirname, `d_${lastFile}`))) {
+                fs.rm(
+                  path.resolve(__dirname, `d_${lastFile}`),
+                  { recursive: true }, (err) => {
+                    if (!!err) {
+                      console.error(
+                        'Error while deleting tmp sketch directory',
+                        err);
+                    } else {
+                      console.log('Directory deleted');
+                    }
+                  });
+              }
+              // Unset last file
+              lastFile = null;
             }
-            // Unset last file
-            lastFile = null;
-          }
-        });
+          });
       } else {
         res.writeHead(404, {
           'Content-Type': 'text/plain',
@@ -278,3 +305,13 @@ const simpleServer = http.createServer(
 simpleServer.listen(8080, () => {
   console.log('Server listening on port 8080.');
 });
+
+// Close the server
+const closeServer = () => {
+  simpleServer.close();
+};
+
+module.exports = {
+  server: simpleServer,
+  closeServer,
+};
