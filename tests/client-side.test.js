@@ -24,4 +24,17 @@ describe('Test button clicks', () => {
     const button = doc.getElementById(id);
     expect(button.disabled).toBe(true);
   });
+
+  test.each([
+    'output',
+    'download-output',
+  ])('Element \'%s\' should be hidden upon start', (id) => {
+    const el = doc.getElementById(id);
+    expect(el.hidden).toBe(true);
+  });
+
+  it('Default selection of example-select should be \"\"', () => {
+    const select = doc.getElementById('example-select');
+    expect(select.value).toBe('');
+  });
 });
