@@ -1,0 +1,29 @@
+#define INDICES {|(i | j) - ?? |}
+#define ARRAYS {| in | ret|}
+
+int L = 32;
+
+harness void main(int[L] in) {
+  int[L] rev = reverse(in);
+  for(int i = 0; i < L; i++) {
+    assert rev[L - (i + 1)] == in[i];
+  }
+}
+
+int[L] reverse(int[L] in) {
+  int[L] ret = 0;
+  int j = L;
+  for (int i = 0; i < L; i++) {
+    if(??) {
+      ret[INDICES] = getListAt(ARRAYS, INDICES);
+    } else {
+      in[INDICES] = getListAt(ARRAYS, INDICES);
+    }
+    j = INDICES;
+  }
+return ret;
+}
+
+int getListAt(int[L] in, int index) {
+	return in[index];
+}

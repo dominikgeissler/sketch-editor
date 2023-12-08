@@ -6,7 +6,7 @@ RUN apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y curl build-essential flex bison tar openjdk-11-jdk nodejs npm && \
   npm install -g n && \
-  n latest && \
+  n 18.18.0 && \
   rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
