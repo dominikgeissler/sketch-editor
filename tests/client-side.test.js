@@ -2,7 +2,7 @@ const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 
-describe('Test button clicks', () => {
+describe('Test initialization of elements', () => {
   let dom;
   let doc;
 
