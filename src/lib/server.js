@@ -118,7 +118,7 @@ const simpleServer = http.createServer(
           res.writeHead(404, {
             'Content-Type': 'text/plain',
           });
-          console.warn(`File does not exist: ${filePath}`);
+          console.log(`File does not exist: ${filePath}`);
           res.end('File does not exist.');
           return;
         }
