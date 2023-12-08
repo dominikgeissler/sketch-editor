@@ -140,20 +140,36 @@ code.addEventListener('keydown', (e) => {
         }
       }
 
+      const minTabIdentation = Math.min(...selectedLines.map(([el, _]) => {
+        let count = 0;
+        for (const c of el) {
+          if (c === '\t') {
+            count++;
+          } else {
+            break;
+          }
+        }
+        return count;
+      }),
+      );
+
       // Now, one can insert the '//' characters before each of those lines,
       // if they are not present, otherwise remove them
 
       const areCommentedOut = selectedLines.every(
-        ([el, _]) => el.startsWith('//'));
+        ([el, _]) => el.trim().startsWith('//'));
 
       for (const [selectedLine, index] of selectedLines) {
         let newLine = selectedLine;
         if (areCommentedOut) {
           // Remove the '//' characters
-          newLine = selectedLine.slice(3);
+          newLine = selectedLine.replace(
+            '\t'.repeat(minTabIdentation) + '// ',
+            '\t'.repeat(minTabIdentation));
         } else {
-          newLine = '// ' + selectedLine;
           // Insert the '//' characters
+          newLine = '\t'.repeat(minTabIdentation) + '// ' +
+            selectedLine.replace('\t'.repeat(minTabIdentation), '');
         }
         lines[index] = newLine;
       }
@@ -215,7 +231,7 @@ code.addEventListener('keydown', (e) => {
   }
 
   // Only save last key if it is auto-filled with the complement
-  lastKeyPressed = keys.include(e.key) ? e.key : undefined;
+  lastKeyPressed = keys.includes(e.key) ? e.key : undefined;
 });
 
 // Disable the download / delete button if the code is empty
