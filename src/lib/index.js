@@ -214,7 +214,8 @@ code.addEventListener('keydown', (e) => {
     }
   }
 
-  lastKeyPressed = e.key === 'Shift' ? lastKeyPressed : e.key;
+  // Only save last key if it is auto-filled with the complement
+  lastKeyPressed = keys.include(e.key) ? e.key : undefined;
 });
 
 // Disable the download / delete button if the code is empty
