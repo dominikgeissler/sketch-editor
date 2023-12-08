@@ -12,6 +12,9 @@
     be disabled as there is no example selected.
 */
 
+// Save last key to automatically replace inserted closed chars
+let lastKeyPressed = undefined;
+
 // Sets visual loading by disabling buttons and setting the cursor
 const setLoading = () => {
   // Add the loading class to display progress cursor
@@ -95,11 +98,81 @@ code.addEventListener('keydown', (e) => {
     }
   };
 
+  const keyComplements = keys.map((k) => keyComplement(k));
+
   // Shortcuts
   if (e.ctrlKey) {
     if (e.key === 'Enter') {
       e.preventDefault();
       document.getElementById('run').click();
+    } else if (e.key === '#') {
+      e.preventDefault();
+
+      // All lines
+      const lines = value.split('\n');
+      const lineStartIndices = [0];
+
+      // Calculate the start index for each line
+      for (let i = 0; i < lines.length; i++) {
+        if (i != lines.length - 1) {
+          lineStartIndices.push(lineStartIndices[i] + lines[i].length + 1);
+        }
+      }
+
+      const selectedLines = [];
+
+      // Check which lines are selected by...
+      for (let i = 0; i < lineStartIndices.length; i++) {
+        // Taking the interval [currentLineStart, nextLineStart)
+        const currentLineStart = lineStartIndices[i];
+        // Virtually insert a new line after the last line to handle
+        // its selection correctly
+        const nextLineStart = i !== lineStartIndices.length - 1 ?
+          lineStartIndices[i + 1] :
+          currentLineStart + lines[lineStartIndices.length - 1].length + 1;
+
+        // If the selection is in this interval (either the start or the end)
+        // the line is selected, otherwise it is skipped
+        if ((currentLineStart <= start && start < nextLineStart) ||
+          (currentLineStart <= end && start < nextLineStart)) {
+          // Line is in selection
+          selectedLines.push([lines[i], i]);
+        }
+      }
+
+      // Now, one can insert the '//' characters before each of those lines,
+      // if they are not present, otherwise remove them
+
+      const areCommentedOut = selectedLines.every(
+        ([el, _]) => el.startsWith('//'));
+
+      for (const [selectedLine, index] of selectedLines) {
+        let newLine = selectedLine;
+        if (areCommentedOut) {
+          // Remove the '//' characters
+          newLine = selectedLine.slice(3);
+        } else {
+          newLine = '// ' + selectedLine;
+          // Insert the '//' characters
+        }
+        lines[index] = newLine;
+      }
+
+      // Shift the start and end of selection by 3 characters, depending
+      // on whether the lines were or were not already commented
+
+      const newStart = Math.max(
+        start + (areCommentedOut ? -3 : 3),
+        lineStartIndices.find((i) => i === start) ?? 0);
+      const newEnd = Math.max(
+        end + (areCommentedOut ? -3 : 3) * selectedLines.length,
+        (lineStartIndices.find((i) => i === end) ?? lineStartIndices.length));
+
+      // Putting it all together:
+      // Set the new value for the code area as well as the selection
+      code.value = lines.join('\n');
+      code.selectionStart = newStart;
+      code.selectionEnd = newEnd;
     }
   }
 
@@ -111,7 +184,7 @@ code.addEventListener('keydown', (e) => {
     code.selectionStart = code.selectionEnd = start + 1;
 
     // When one of the keys is pressed, insert the key and its complement
-  } else if (keys.includes(e.key)) {
+  } else if (keys.includes(e.key) && lastKeyPressed !== e.key) {
     e.preventDefault();
 
     const selectedText = value.substring(start, end) ?? '';
@@ -134,7 +207,14 @@ code.addEventListener('keydown', (e) => {
       code.value = value.substring(0, start - 1) + value.substring(end + 1);
       code.selectionStart = code.selectionEnd = start - 1;
     }
+  } else if (keyComplements.includes(e.key)) {
+    if (!!lastKeyPressed && keyComplement(lastKeyPressed) === e.key) {
+      e.preventDefault();
+      code.selectionStart = code.selectionEnd = start + 1;
+    }
   }
+
+  lastKeyPressed = e.key === 'Shift' ? lastKeyPressed : e.key;
 });
 
 // Disable the download / delete button if the code is empty
