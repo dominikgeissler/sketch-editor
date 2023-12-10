@@ -2,18 +2,28 @@
  * @fileoverview Handles the client-side logic of the editor.
  */
 
-
-/*
-  TODO:
-    The (un)setLoading functions currently don't take the buttons'
-    behavior into account. For example, after the user loads an example
-    (and the selection is removed) the "Load Example"-button is
-    enabled by the unsetLoading-function, even though it should
-    be disabled as there is no example selected.
-*/
-
 // Save last key to automatically replace inserted closed chars
 let lastKeyPressed = undefined;
+
+// Save the buttons' last states
+/**
+ * Buttons' last states `disabled`-state
+ * Order:
+ *  * Run
+ *  * Example
+ *  * Upload
+ *  * Download
+ *  * Delete
+ */
+let lastButtonStates = [
+  false,
+  true,
+  false,
+  true,
+  true,
+];
+
+const buttonIds = ['run', 'example', 'upload', 'download', 'delete'];
 
 // Sets visual loading by disabling buttons and setting the cursor
 const setLoading = () => {
@@ -21,10 +31,12 @@ const setLoading = () => {
   document.body.classList.add('loading');
   document.getElementById('code').classList.add('loading');
 
+  // Save the current states
+  lastButtonStates = buttonIds
+    .map((id) => document.getElementById(id).disabled);
+
   // Disable the buttons
-  document.getElementById('run').disabled = true;
-  document.getElementById('example').disabled = true;
-  document.getElementById('example-select').disabled = true;
+  buttonIds.forEach((id) => document.getElementById(id).disabled = true);
 };
 
 // Unsets the visual loading
@@ -33,10 +45,9 @@ const unsetLoading = () => {
   document.body.classList.remove('loading');
   document.getElementById('code').classList.remove('loading');
 
-  // Enable the buttons
-  document.getElementById('run').disabled = false;
-  document.getElementById('example').disabled = false;
-  document.getElementById('example-select').disabled = false;
+  // Set the buttons to their state before loading
+  buttonIds.map((id, index) =>
+    document.getElementById(id).disabled = lastButtonStates[index]);
 };
 
 // Correctly renders console output with colors that are encoded by ANSI codes
@@ -282,6 +293,10 @@ document.getElementById('run').addEventListener('click', async (e) => {
 
   // Show the "download output" button
   document.getElementById('download-output').hidden = false;
+
+  // Disable all buttons that have to do with code being present
+  document.getElementById('download').disabled = true;
+  document.getElementById('delete').disabled = true;
 });
 
 // Load an example
@@ -363,6 +378,10 @@ document.getElementById('upload').addEventListener('click', (e) => {
     // Put the files content into the code editor
     reader.onload = () => {
       document.getElementById('code').value = reader.result;
+
+      // Enable the buttons that need code to be present
+      document.getElementById('download').disabled = false;
+      document.getElementById('delete').disabled = false;
     };
   });
 });
