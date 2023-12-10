@@ -21,7 +21,7 @@ int[L] reverse(int[L] in) {
     }
     j = INDICES;
   }
-return ret;
+  return ret;
 }
 
 int getListAt(int[L] in, int index) {
