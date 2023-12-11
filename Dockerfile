@@ -1,12 +1,14 @@
-# Use a more lightweight image
-FROM ubuntu:23.04 as SKETCH
+# |-------------------|
+# |--- Build stage ---|
+# |-------------------|
+
+# TODO: Use a more lightweight image?
+FROM ubuntu:23.04 as builder
 
 # Install dependencies and remove unnecessary packages
 RUN apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk nodejs npm && \
-  npm install -g n && \
-  n 18.18.0 && \
+  apt-get install -y curl build-essential flex bison tar openjdk-11-jdk && \
   rm -rf /var/lib/apt/lists/*
 
 # Download and extract sketch
@@ -64,17 +66,38 @@ RUN rm -r /home/sketch/README \
   /home/sketch/sketch-backend/src/SketchSolver/**/*.h \
   /home/sketch/sketch-backend/src/SketchSolver/**/*.cpp
 
+# |-----------------|
+# |--- Run stage ---|
+# |-----------------|
+
+FROM ubuntu:23.04 as run
+
+# Copy the sketch files from the build stage
+COPY --from=builder /home/sketch /home/sketch
+
+
+
+# Install the dependencies for the run stage, also set up node
+# Note: cURL is needed for n
+# TODO maybe replace this image with a node-based one?
+#   I wasn't able to do this
+
+RUN apt-get update && \
+  apt-get -y upgrade && \
+  apt-get install -y openjdk-11-jdk nodejs npm curl && \
+  npm install -g n && \
+  n 18.18.0 && \
+  rm -rf /var/lib/apt/lists/*
+
 # Set up environmental variables and aliases
 ENV PATH="${PATH}:/home/sketch/sketch-frontend"
 ENV SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
 
-
 # TODO remove debug cmd
-RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc && \
-  echo 'alias "s=sketch /home/app/src/examples/ListReverse.sk --fe-tempdir /home"' >> ~/.bashrc
-# -- Simple server setup --
-
-# nodejs stuff
+RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
+# |---------------------------|
+# |--- Simple server setup ---|
+# |---------------------------|
 
 COPY . /home/app
 
