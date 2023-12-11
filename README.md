@@ -35,4 +35,4 @@ or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_
 
 ---
 
-* Favicon by [Icons8](https://icons8.com)
+Notices can be found [here](notices)
