@@ -7,8 +7,25 @@ const fs = require('fs');
 const path = require('path');
 const formidable = require('formidable');
 const { exec } = require('child_process');
+const tar = require('tar');
 
 let lastFile = null;
+
+/**
+ * Checks whether a folder is empty.
+ * @param {fs.PathLike} path The path to the folder
+ * @return {boolean} `true` if the folder doesn't exist or is empty,
+ *  `false` otherwise
+ */
+const isFolderEmpty = (path) => {
+  if (fs.existsSync(path)) {
+    try {
+      const files = fs.readdirSync(path);
+      return files.length == 0;
+    } catch { }
+  }
+  return true;
+};
 
 /**
  * Helper function to obtain the Content-Type by file extension
@@ -222,72 +239,87 @@ const simpleServer = http.createServer(
             However, this works for now.
         */
 
-        // Create tar.gz archive with all files
-        // eslint-disable-next-line max-len
-        exec(`tar -czvf "output.tar.gz" lib/${lastFile} -C ${'lib/d_' + lastFile} --transform='s,^./d_${lastFile}/,,' tmp`,
-          (err, stdout, stderr) => {
-            if (!!err) {
-              res.writeHead(500, {
-                'Content-Type': 'text/plain',
-              });
-              console.error(`Error while creating archive: ${err.message}`,
-                err);
-              res.end(`${stderr}`);
-            } else {
-              console.log(`Archive created: ${stdout}`);
-              // Send file
-              res.writeHead(200, {
-                'Content-Type': 'application/gzip',
-                'Content-Disposition': `attachment; filename=output.tar.gz`,
-              });
+        const tarFiles = [lastFile];
 
-              // Send the file to client
-              fs.createReadStream(
-                path.resolve(__dirname, '..', 'output.tar.gz'),
-              )
-                .pipe(res)
-                .on('finish', () => {
-                  console.log('File sent');
+        if (!isFolderEmpty(path.resolve(__dirname, `d_${lastFile}`)) &&
+          !isFolderEmpty(path.resolve(__dirname, `d_${lastFile}`, 'tmp'))
+        ) {
+          tarFiles.push(path.join(`d_${lastFile}`, 'tmp'));
+        }
 
-                  // Remove archive
-                  fs.unlink(
-                    path.resolve(__dirname, '..', 'output.tar.gz'),
-                    (err) => {
-                      if (!!err) {
-                        console.error('Error while deleting archive', err);
-                      } else {
-                        console.log('Archive deleted');
-                      }
-                    });
-                });
+        tar.c({
+          cwd: path.resolve(__dirname),
+          gzip: true,
+          file: path.resolve(__dirname, 'output.tar.gz'),
+        }, [
+          ...tarFiles,
+        ])
+          .then(() => {
+            console.log(`Archive created.`);
+            // Send file
+            res.writeHead(200, {
+              'Content-Type': 'application/gzip',
+              'Content-Disposition': `attachment; filename=output.tar.gz`,
+            });
 
-              // Remove tmp files and directory
-              fs.unlink(path.resolve(__dirname, lastFile), (err) => {
-                if (!!err) {
-                  console.error('Error while deleting last sketch file', err);
-                } else {
-                  console.log('File deleted');
-                }
-              });
+            // Send the file to client
+            fs.createReadStream(
+              path.resolve(__dirname, 'output.tar.gz'),
+            )
+              .pipe(res)
+              .on('finish', () => {
+                console.log('File sent');
 
-              // Delete directory, if it exists
-              if (fs.existsSync(path.resolve(__dirname, `d_${lastFile}`))) {
-                fs.rm(
-                  path.resolve(__dirname, `d_${lastFile}`),
-                  { recursive: true }, (err) => {
+                // Remove archive
+                fs.unlink(
+                  path.resolve(__dirname, 'output.tar.gz'),
+                  (err) => {
                     if (!!err) {
-                      console.error(
-                        'Error while deleting tmp sketch directory',
-                        err);
+                      console.error('Error while deleting archive', err);
                     } else {
-                      console.log('Directory deleted');
+                      console.log('Archive deleted');
                     }
                   });
+              });
+
+            // Remove tmp files and directory
+            fs.unlink(path.resolve(__dirname, lastFile), (err) => {
+              if (!!err) {
+                console.error('Error while deleting last sketch file', err);
+              } else {
+                console.log('File deleted');
               }
-              // Unset last file
-              lastFile = null;
+            });
+
+            // Delete directory, if it exists
+            if (fs.existsSync(path.resolve(__dirname, `d_${lastFile}`))) {
+              fs.rm(
+                path.resolve(__dirname, `d_${lastFile}`),
+                { recursive: true }, (err) => {
+                  if (!!err) {
+                    console.error(
+                      'Error while deleting tmp sketch directory',
+                      err);
+                  } else {
+                    console.log('Directory deleted');
+                  }
+                });
             }
+            // Unset last file
+            lastFile = null;
+          })
+          .catch((err) => {
+            res.writeHead(500, {
+              'Content-Type': 'text/plain',
+            });
+            console.error(`Error while creating archive: ${err.message}`,
+              err);
+            res.end(`${err.message}`);
           });
+
+        // Create tar.gz archive with all files
+        // eslint-disable-next-line max-len
+        // exec(`tar -czvf "output.tar.gz" lib/${lastFile} -C ${'lib/d_' + lastFile} --transform='s,^./d_${lastFile}/,,' tmp`,
       } else {
         res.writeHead(404, {
           'Content-Type': 'text/plain',
