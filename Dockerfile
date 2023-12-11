@@ -75,8 +75,6 @@ FROM ubuntu:23.04 as run
 # Copy the sketch files from the build stage
 COPY --from=builder /home/sketch /home/sketch
 
-
-
 # Install the dependencies for the run stage, also set up node
 # Note: cURL is needed for n
 # TODO maybe replace this image with a node-based one?
@@ -93,8 +91,8 @@ RUN apt-get update && \
 ENV PATH="${PATH}:/home/sketch/sketch-frontend"
 ENV SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
 
-# TODO remove debug cmd
 RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
+
 # |---------------------------|
 # |--- Simple server setup ---|
 # |---------------------------|
