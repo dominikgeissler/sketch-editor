@@ -222,23 +222,6 @@ const simpleServer = http.createServer(
       // Download last file + generated output files
       console.debug('Downloading output...');
       if (!!lastFile) {
-        /*
-          TODO:
-            Currently, the archive contains the whole directory
-            structure, i.e. folders.
-            This is not ideal, as it makes it harder to understand the files.
-            Instead, we should only include the files that are needed.
-            These are:
-              * The sketch file
-              * The tmp files
-            The tmp files are only generated if there is an error.
-            One can think about also adding the output which is currently
-            logged in the "output" div.
-            It could also be considered to directly generate code from sketch.
-            This is done via the "--fe-output-code" flag.
-            However, this works for now.
-        */
-
         const tarFiles = [lastFile];
 
         if (!isFolderEmpty(path.resolve(__dirname, `d_${lastFile}`)) &&
