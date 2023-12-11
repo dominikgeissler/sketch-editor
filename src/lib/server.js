@@ -47,6 +47,7 @@ const simpleServer = http.createServer(
         res.writeHead(500, {
           'Content-Type': 'text/plain',
         });
+        console.log('File could not be resolved');
         res.end('Request could not be parsed.');
       }
 
@@ -77,6 +78,7 @@ const simpleServer = http.createServer(
               res.writeHead(200, {
                 'Content-Type': getContentType(fileName.split('.').pop()),
               });
+              console.log(`${fileName} found, sending back...`);
               res.end(data);
             }
           });
@@ -97,6 +99,7 @@ const simpleServer = http.createServer(
               res.writeHead(200, {
                 'Content-Type': 'application/json',
               });
+              console.log(`${fileName} found, sending back...`);
               res.end(JSON.stringify(files));
             }
           });
@@ -135,6 +138,7 @@ const simpleServer = http.createServer(
             res.writeHead(200, {
               'Content-Type': 'text/plain',
             });
+            console.log(`${filePath} found, sending back...`);
             res.end(data);
           }
         });
@@ -189,6 +193,7 @@ const simpleServer = http.createServer(
                     res.writeHead(200, {
                       'Content-Type': 'text/plain',
                     });
+                    console.log('Sketch successfully executed.');
                     res.end(`${stdout}`);
                   }
                 });
@@ -287,6 +292,7 @@ const simpleServer = http.createServer(
         res.writeHead(404, {
           'Content-Type': 'text/plain',
         });
+        console.debug('lastFile is not set...');
         res.end('Not found');
       }
     } else {
