@@ -1,5 +1,5 @@
 # |-------------------|
-# |--- Build stage ---|
+# |==[ Build stage ]==|
 # |-------------------|
 
 # TODO: Use a more lightweight image?
@@ -67,7 +67,7 @@ RUN rm -r /home/sketch/README \
   /home/sketch/sketch-backend/src/SketchSolver/**/*.cpp
 
 # |-----------------|
-# |--- Run stage ---|
+# |==[ Run stage ]==|
 # |-----------------|
 
 FROM ubuntu:23.04 as run
@@ -77,6 +77,7 @@ COPY --from=builder /home/sketch /home/sketch
 
 # Install the dependencies for the run stage, also set up node
 # Note: cURL is needed for n
+# Also add the alias "sketch"
 # TODO maybe replace this image with a node-based one?
 #   I wasn't able to do this
 
@@ -85,23 +86,26 @@ RUN apt-get update && \
   apt-get install -y openjdk-11-jdk nodejs npm curl && \
   npm install -g n && \
   n 18.18.0 && \
-  rm -rf /var/lib/apt/lists/*
+  rm -rf /var/lib/apt/lists/* && \
+  echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
 
-# Set up environmental variables and aliases
+# Set up environmental variables
 ENV PATH="${PATH}:/home/sketch/sketch-frontend"
 ENV SKETCH_HOME="/home/sketch/sketch-frontend/runtime"
 
-RUN echo 'alias sketch="bash /home/sketch/sketch-frontend/sketch"' >> /root/.bashrc
-
 # |---------------------------|
-# |--- Simple server setup ---|
+# |==[ Simple server setup ]==|
 # |---------------------------|
-
-COPY . /home/app
 
 WORKDIR /home/app
 
+# Make some use of layer caching as to not run 'npm install'
+# every time something changed
+COPY package.json .
+
 RUN npm install
+
+COPY . .
 
 EXPOSE 8080
 

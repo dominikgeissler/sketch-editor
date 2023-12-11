@@ -7,6 +7,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addOptions = (files) => {
     const select = document.getElementById('example-select');
+    files.sort();
     files.forEach((f) => {
       const option = document.createElement('option');
       option.value = f;

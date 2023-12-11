@@ -1,6 +1,9 @@
 {
+  "name": "sketch-editor",
+  "version": "1.0.0",
   "dependencies": {
-    "formidable": "^3.5.1"
+    "formidable": "^3.5.1",
+    "tar": "^6.2.0"
   },
   "devDependencies": {
     "eslint": "^8.55.0",
@@ -17,7 +20,7 @@
     "test:coverage": "jest --coverage"
   },
   "lint-staged": {
-    "*.js": [
+    "**/*.js": [
       "eslint --fix .",
       "git add"
     ]
