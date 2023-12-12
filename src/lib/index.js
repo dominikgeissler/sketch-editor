@@ -95,7 +95,11 @@ code.addEventListener('keydown', (e) => {
 
   const keys = ['{', '(', '[', '\'', '"', '`'];
 
-  // Returns the "closing" char for a given key input
+  /**
+   * Returns the "closing" char for a given key input
+   * @param {str} key the key pressed
+   * @return {str} the complement key
+   */
   const keyComplement = (key) => {
     switch (key) {
       case '{':
@@ -109,6 +113,9 @@ code.addEventListener('keydown', (e) => {
     }
   };
 
+  /**
+   * Set of all key complements
+   */
   const keyComplements = keys.map((k) => keyComplement(k));
 
   // Shortcuts
@@ -151,6 +158,9 @@ code.addEventListener('keydown', (e) => {
         }
       }
 
+      /**
+       * Minimum of number of tabs that are infront of each line
+       */
       const minTabIdentation = Math.min(...selectedLines.map(([el, _]) => {
         let count = 0;
         for (const c of el) {
@@ -187,7 +197,8 @@ code.addEventListener('keydown', (e) => {
 
       // Shift the start and end of selection by 3 characters, depending
       // on whether the lines were or were not already commented
-
+      // Also limit the newStart / newEnd to the current lines start resp.
+      // end or the editors start resp. end
       const newStart = Math.max(
         start + (areCommentedOut ? -3 : 3),
         lineStartIndices.find((i) => i === start) ?? 0);
@@ -223,13 +234,9 @@ code.addEventListener('keydown', (e) => {
     // remove both
   } else if (e.key === 'Backspace') {
     // Remove both symbols at once
-    if (value[start - 1] === '{' && value[end] === '}' ||
-      value[start - 1] === '(' && value[end] === ')' ||
-      value[start - 1] === '[' && value[end] === ']' ||
-      value[start - 1] === '"' && value[end] === '"' ||
-      value[start - 1] === '\'' && value[end] === '\'' ||
-      value[start - 1] === '`' && value[end] === '`'
-    ) {
+    const k = value[start - 1];
+
+    if (keys.includes(k) && keyComplement(k) === value[end]) {
       e.preventDefault();
       code.value = value.substring(0, start - 1) + value.substring(end + 1);
       code.selectionStart = code.selectionEnd = start - 1;
