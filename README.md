@@ -35,4 +35,4 @@ or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_
 
 ---
 
-Notices can be found [here](notices)
+Notices can be found [here](doc/notices)
