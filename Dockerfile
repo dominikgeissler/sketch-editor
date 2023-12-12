@@ -80,7 +80,6 @@ COPY --from=builder /home/sketch /home/sketch
 # Also add the alias "sketch"
 # TODO maybe replace this image with a node-based one?
 #   I wasn't able to do this
-
 RUN apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y openjdk-11-jdk nodejs npm curl && \
