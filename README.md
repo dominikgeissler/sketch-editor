@@ -30,6 +30,9 @@ docker run -p 8080:8080 -d sketch-editor
 ```
 or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_
 
+### Benchmarks
+Some experiments and their benchmarks can be found [in the benchmarks directory](benchmarks).
+
 ### Documentation
 Documentation can be found [here](doc). Notices can be found [here](doc/notices).
 
