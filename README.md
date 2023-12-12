@@ -31,9 +31,6 @@ docker run -p 8080:8080 -d sketch-editor
 or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_
 
 ### Documentation
-Documentation can be found [here](doc).
+Documentation can be found [here](doc). Notices can be found [here](doc/notices).
 
 [^1]: [Program Sketching, A . Solar-Lezama, International Journal on Software Tools for Technology Transfer 15, 475 - 495 (2013)](https://doi.org/10.1007/s10009-012-0249-7)
----
-
-Notices can be found [here](doc/notices).
