@@ -4,7 +4,7 @@
 [![tests](https://github.com/dominikgeissler/sketch-editor/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/dominikgeissler/sketch-editor/actions/workflows/tests.yml)
 [![release](https://img.shields.io/github/v/release/dominikgeissler/sketch-editor)](https://github.com/dominikgeissler/sketch-editor/releases/latest)
 
-Dockerized editor for the sketch project from [A. Solar-Lezama](https://people.csail.mit.edu/asolar/) with a small webserver interface.
+Dockerized editor for the sketch project[^1] from [A. Solar-Lezama](https://people.csail.mit.edu/asolar/) with a small webserver interface.
 
 * https://github.com/asolarlez/sketch-backend
 * https://github.com/asolarlez/sketch-frontend
@@ -30,9 +30,10 @@ docker run -p 8080:8080 -d sketch-editor
 ```
 or in VSCode _Ctrl + Shift + P_ -> _Run task_ -> _Docker Run_
 
-## References
-* [Program Sketching, A . Solar-Lezama, International Journal on Software Tools for Technology Transfer 15, 475 - 495 (2013)](https://doi.org/10.1007/s10009-012-0249-7)
+### Documentation
+Documentation can be found [here](doc).
 
+[^1]: [Program Sketching, A . Solar-Lezama, International Journal on Software Tools for Technology Transfer 15, 475 - 495 (2013)](https://doi.org/10.1007/s10009-012-0249-7)
 ---
 
-Notices can be found [here](doc/notices)
+Notices can be found [here](doc/notices).
