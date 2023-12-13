@@ -5,7 +5,7 @@ class Result:
         self.run_number = run_number
         self.time = time
 
-file_path = "results.txt"
+file_path = "img/run3/results.txt"
 
 with open(file_path, "r") as f:
     lines = f.readlines()
@@ -14,7 +14,7 @@ d = {}
 current_run = 0
 for line in lines:
     line = line.strip("\n")
-    if not line or line.startswith("TOTAL") or "AVG" in line:
+    if not line or line.startswith("TOTAL") or line.startswith("SKIPPED") or "AVG" in line:
         continue
     elif line.startswith("RESULTS RUN"):
         current_run = int(line.split(" ")[2].strip(":"))
