@@ -1601,6 +1601,7 @@ LeastSig1Bit_Generator.sk: 3742
 ListReverse.sk: 5029
 
 TOTAL RUNS = 100
+SKIPPED RUNS = 1
 Fibonacci.sk: AVG: 4095.63, TOTAL: 409563
 HelloWorld.sk: AVG: 423.97, TOTAL: 42397
 InplaceSwap.sk: AVG: 519.29, TOTAL: 51929

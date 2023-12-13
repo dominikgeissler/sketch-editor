@@ -1,0 +1,1629 @@
+RESULTS RUN 1:
+
+RESULTS RUN 2:
+
+RESULTS RUN 3:
+
+RESULTS RUN 4:
+
+RESULTS RUN 5:
+
+RESULTS RUN 6:
+
+RESULTS RUN 7:
+
+RESULTS RUN 8:
+
+RESULTS RUN 9:
+
+RESULTS RUN 10:
+
+RESULTS RUN 11:
+
+Fibonacci.sk: 2904
+
+HelloWorld.sk: 333
+
+InplaceSwap.sk: 410
+
+InplaceSwap_Repeat.sk: 470
+
+LeastSig0Bit.sk: 596
+
+LeastSig1Bit_Generator.sk: 4147
+
+ListReverse.sk: 3791
+
+RESULTS RUN 12:
+
+Fibonacci.sk: 3001
+
+HelloWorld.sk: 364
+
+InplaceSwap.sk: 403
+
+InplaceSwap_Repeat.sk: 522
+
+LeastSig0Bit.sk: 530
+
+LeastSig1Bit_Generator.sk: 4850
+
+ListReverse.sk: 5990
+
+RESULTS RUN 13:
+
+Fibonacci.sk: 3011
+
+HelloWorld.sk: 333
+
+InplaceSwap.sk: 476
+
+InplaceSwap_Repeat.sk: 453
+
+LeastSig0Bit.sk: 582
+
+LeastSig1Bit_Generator.sk: 4170
+
+ListReverse.sk: 5259
+
+RESULTS RUN 14:
+
+Fibonacci.sk: 3631
+
+HelloWorld.sk: 570
+
+InplaceSwap.sk: 682
+
+InplaceSwap_Repeat.sk: 881
+
+LeastSig0Bit.sk: 783
+
+LeastSig1Bit_Generator.sk: 5262
+
+ListReverse.sk: 4179
+
+RESULTS RUN 15:
+
+Fibonacci.sk: 3304
+
+HelloWorld.sk: 397
+
+InplaceSwap.sk: 573
+
+InplaceSwap_Repeat.sk: 820
+
+LeastSig0Bit.sk: 862
+
+LeastSig1Bit_Generator.sk: 4420
+
+ListReverse.sk: 3219
+
+RESULTS RUN 16:
+
+Fibonacci.sk: 2981
+
+HelloWorld.sk: 344
+
+InplaceSwap.sk: 522
+
+InplaceSwap_Repeat.sk: 556
+
+LeastSig0Bit.sk: 674
+
+LeastSig1Bit_Generator.sk: 5203
+
+ListReverse.sk: 3891
+
+RESULTS RUN 17:
+
+Fibonacci.sk: 2968
+
+HelloWorld.sk: 331
+
+InplaceSwap.sk: 451
+
+InplaceSwap_Repeat.sk: 611
+
+LeastSig0Bit.sk: 762
+
+LeastSig1Bit_Generator.sk: 7873
+
+ListReverse.sk: 5973
+
+RESULTS RUN 18:
+
+Fibonacci.sk: 3048
+
+HelloWorld.sk: 358
+
+InplaceSwap.sk: 588
+
+InplaceSwap_Repeat.sk: 737
+
+LeastSig0Bit.sk: 897
+
+LeastSig1Bit_Generator.sk: 4823
+
+ListReverse.sk: 4575
+
+RESULTS RUN 19:
+
+Fibonacci.sk: 3103
+
+HelloWorld.sk: 388
+
+InplaceSwap.sk: 488
+
+InplaceSwap_Repeat.sk: 676
+
+LeastSig0Bit.sk: 719
+
+LeastSig1Bit_Generator.sk: 4968
+
+ListReverse.sk: 3500
+
+RESULTS RUN 20:
+
+Fibonacci.sk: 3131
+
+HelloWorld.sk: 499
+
+InplaceSwap.sk: 787
+
+InplaceSwap_Repeat.sk: 1062
+
+LeastSig0Bit.sk: 831
+
+LeastSig1Bit_Generator.sk: 6066
+
+ListReverse.sk: 6848
+
+RESULTS RUN 21:
+
+Fibonacci.sk: 4383
+
+HelloWorld.sk: 525
+
+InplaceSwap.sk: 706
+
+InplaceSwap_Repeat.sk: 786
+
+LeastSig0Bit.sk: 713
+
+LeastSig1Bit_Generator.sk: 5750
+
+ListReverse.sk: 5010
+
+RESULTS RUN 22:
+
+Fibonacci.sk: 3503
+
+HelloWorld.sk: 519
+
+InplaceSwap.sk: 625
+
+InplaceSwap_Repeat.sk: 822
+
+LeastSig0Bit.sk: 799
+
+LeastSig1Bit_Generator.sk: 5267
+
+ListReverse.sk: 4418
+
+RESULTS RUN 23:
+
+Fibonacci.sk: 3164
+
+HelloWorld.sk: 387
+
+InplaceSwap.sk: 483
+
+InplaceSwap_Repeat.sk: 615
+
+LeastSig0Bit.sk: 896
+
+LeastSig1Bit_Generator.sk: 5307
+
+ListReverse.sk: 7229
+
+RESULTS RUN 24:
+
+Fibonacci.sk: 3084
+
+HelloWorld.sk: 387
+
+InplaceSwap.sk: 473
+
+InplaceSwap_Repeat.sk: 521
+
+LeastSig0Bit.sk: 558
+
+LeastSig1Bit_Generator.sk: 4475
+
+ListReverse.sk: 6022
+
+RESULTS RUN 25:
+
+Fibonacci.sk: 2930
+
+HelloWorld.sk: 420
+
+InplaceSwap.sk: 396
+
+InplaceSwap_Repeat.sk: 478
+
+LeastSig0Bit.sk: 509
+
+LeastSig1Bit_Generator.sk: 3711
+
+ListReverse.sk: 4283
+
+RESULTS RUN 26:
+
+Fibonacci.sk: 2854
+
+HelloWorld.sk: 347
+
+InplaceSwap.sk: 408
+
+InplaceSwap_Repeat.sk: 472
+
+LeastSig0Bit.sk: 491
+
+LeastSig1Bit_Generator.sk: 5900
+
+ListReverse.sk: 3973
+
+RESULTS RUN 27:
+
+Fibonacci.sk: 2922
+
+HelloWorld.sk: 366
+
+InplaceSwap.sk: 432
+
+InplaceSwap_Repeat.sk: 579
+
+LeastSig0Bit.sk: 509
+
+LeastSig1Bit_Generator.sk: 4955
+
+ListReverse.sk: 3852
+
+RESULTS RUN 28:
+
+Fibonacci.sk: 2960
+
+HelloWorld.sk: 321
+
+InplaceSwap.sk: 424
+
+InplaceSwap_Repeat.sk: 503
+
+LeastSig0Bit.sk: 429
+
+LeastSig1Bit_Generator.sk: 4245
+
+ListReverse.sk: 3556
+
+RESULTS RUN 29:
+
+Fibonacci.sk: 2899
+
+HelloWorld.sk: 335
+
+InplaceSwap.sk: 390
+
+InplaceSwap_Repeat.sk: 513
+
+LeastSig0Bit.sk: 536
+
+LeastSig1Bit_Generator.sk: 8649
+
+ListReverse.sk: 3839
+
+RESULTS RUN 30:
+
+Fibonacci.sk: 2750
+
+HelloWorld.sk: 304
+
+InplaceSwap.sk: 370
+
+InplaceSwap_Repeat.sk: 446
+
+LeastSig0Bit.sk: 466
+
+LeastSig1Bit_Generator.sk: 3742
+
+ListReverse.sk: 5753
+
+RESULTS RUN 31:
+
+Fibonacci.sk: 2715
+
+HelloWorld.sk: 337
+
+InplaceSwap.sk: 418
+
+InplaceSwap_Repeat.sk: 461
+
+LeastSig0Bit.sk: 517
+
+LeastSig1Bit_Generator.sk: 3476
+
+ListReverse.sk: 2987
+
+RESULTS RUN 32:
+
+Fibonacci.sk: 2785
+
+HelloWorld.sk: 341
+
+InplaceSwap.sk: 368
+
+InplaceSwap_Repeat.sk: 527
+
+LeastSig0Bit.sk: 543
+
+LeastSig1Bit_Generator.sk: 4218
+
+ListReverse.sk: 3418
+
+RESULTS RUN 33:
+
+Fibonacci.sk: 2731
+
+HelloWorld.sk: 317
+
+InplaceSwap.sk: 377
+
+InplaceSwap_Repeat.sk: 494
+
+LeastSig0Bit.sk: 460
+
+LeastSig1Bit_Generator.sk: 4022
+
+ListReverse.sk: 3941
+
+RESULTS RUN 34:
+
+Fibonacci.sk: 2761
+
+HelloWorld.sk: 310
+
+InplaceSwap.sk: 361
+
+InplaceSwap_Repeat.sk: 453
+
+LeastSig0Bit.sk: 456
+
+LeastSig1Bit_Generator.sk: 3570
+
+ListReverse.sk: 3217
+
+RESULTS RUN 35:
+
+Fibonacci.sk: 2993
+
+HelloWorld.sk: 476
+
+InplaceSwap.sk: 388
+
+InplaceSwap_Repeat.sk: 551
+
+LeastSig0Bit.sk: 648
+
+LeastSig1Bit_Generator.sk: 3781
+
+ListReverse.sk: 4609
+
+RESULTS RUN 36:
+
+Fibonacci.sk: 2887
+
+HelloWorld.sk: 328
+
+InplaceSwap.sk: 388
+
+InplaceSwap_Repeat.sk: 488
+
+LeastSig0Bit.sk: 476
+
+LeastSig1Bit_Generator.sk: 4404
+
+ListReverse.sk: 4224
+
+RESULTS RUN 37:
+
+Fibonacci.sk: 2717
+
+HelloWorld.sk: 321
+
+InplaceSwap.sk: 371
+
+InplaceSwap_Repeat.sk: 466
+
+LeastSig0Bit.sk: 429
+
+LeastSig1Bit_Generator.sk: 3573
+
+ListReverse.sk: 5350
+
+RESULTS RUN 38:
+
+Fibonacci.sk: 2786
+
+HelloWorld.sk: 362
+
+InplaceSwap.sk: 366
+
+InplaceSwap_Repeat.sk: 486
+
+LeastSig0Bit.sk: 462
+
+LeastSig1Bit_Generator.sk: 3568
+
+ListReverse.sk: 4843
+
+RESULTS RUN 39:
+
+Fibonacci.sk: 2737
+
+HelloWorld.sk: 317
+
+InplaceSwap.sk: 370
+
+InplaceSwap_Repeat.sk: 464
+
+LeastSig0Bit.sk: 453
+
+LeastSig1Bit_Generator.sk: 3484
+
+ListReverse.sk: 3691
+
+RESULTS RUN 40:
+
+Fibonacci.sk: 2729
+
+HelloWorld.sk: 322
+
+InplaceSwap.sk: 371
+
+InplaceSwap_Repeat.sk: 491
+
+LeastSig0Bit.sk: 430
+
+LeastSig1Bit_Generator.sk: 4018
+
+ListReverse.sk: 4547
+
+RESULTS RUN 41:
+
+Fibonacci.sk: 2781
+
+HelloWorld.sk: 304
+
+InplaceSwap.sk: 433
+
+InplaceSwap_Repeat.sk: 458
+
+LeastSig0Bit.sk: 493
+
+LeastSig1Bit_Generator.sk: 3433
+
+ListReverse.sk: 3640
+
+RESULTS RUN 42:
+
+Fibonacci.sk: 2806
+
+HelloWorld.sk: 323
+
+InplaceSwap.sk: 375
+
+InplaceSwap_Repeat.sk: 456
+
+LeastSig0Bit.sk: 447
+
+LeastSig1Bit_Generator.sk: 4770
+
+ListReverse.sk: 5051
+
+RESULTS RUN 43:
+
+Fibonacci.sk: 2707
+
+HelloWorld.sk: 312
+
+InplaceSwap.sk: 384
+
+InplaceSwap_Repeat.sk: 485
+
+LeastSig0Bit.sk: 466
+
+LeastSig1Bit_Generator.sk: 3510
+
+ListReverse.sk: 3856
+
+RESULTS RUN 44:
+
+Fibonacci.sk: 3333
+
+HelloWorld.sk: 459
+
+InplaceSwap.sk: 547
+
+InplaceSwap_Repeat.sk: 670
+
+LeastSig0Bit.sk: 667
+
+LeastSig1Bit_Generator.sk: 4428
+
+ListReverse.sk: 4743
+
+RESULTS RUN 45:
+
+Fibonacci.sk: 2845
+
+HelloWorld.sk: 313
+
+InplaceSwap.sk: 380
+
+InplaceSwap_Repeat.sk: 526
+
+LeastSig0Bit.sk: 622
+
+LeastSig1Bit_Generator.sk: 4362
+
+ListReverse.sk: 3772
+
+RESULTS RUN 46:
+
+Fibonacci.sk: 2877
+
+HelloWorld.sk: 320
+
+InplaceSwap.sk: 422
+
+InplaceSwap_Repeat.sk: 587
+
+LeastSig0Bit.sk: 589
+
+LeastSig1Bit_Generator.sk: 4480
+
+ListReverse.sk: 3110
+
+RESULTS RUN 47:
+
+Fibonacci.sk: 2935
+
+HelloWorld.sk: 364
+
+InplaceSwap.sk: 376
+
+InplaceSwap_Repeat.sk: 653
+
+LeastSig0Bit.sk: 642
+
+LeastSig1Bit_Generator.sk: 4307
+
+ListReverse.sk: 3675
+
+RESULTS RUN 48:
+
+Fibonacci.sk: 2786
+
+HelloWorld.sk: 312
+
+InplaceSwap.sk: 408
+
+InplaceSwap_Repeat.sk: 545
+
+LeastSig0Bit.sk: 597
+
+LeastSig1Bit_Generator.sk: 4322
+
+ListReverse.sk: 3561
+
+RESULTS RUN 49:
+
+Fibonacci.sk: 2947
+
+HelloWorld.sk: 352
+
+InplaceSwap.sk: 459
+
+InplaceSwap_Repeat.sk: 728
+
+LeastSig0Bit.sk: 724
+
+LeastSig1Bit_Generator.sk: 3927
+
+ListReverse.sk: 5467
+
+RESULTS RUN 50:
+
+Fibonacci.sk: 2831
+
+HelloWorld.sk: 319
+
+InplaceSwap.sk: 402
+
+InplaceSwap_Repeat.sk: 512
+
+LeastSig0Bit.sk: 576
+
+LeastSig1Bit_Generator.sk: 4548
+
+ListReverse.sk: 4178
+
+RESULTS RUN 51:
+
+Fibonacci.sk: 2845
+
+HelloWorld.sk: 374
+
+InplaceSwap.sk: 399
+
+InplaceSwap_Repeat.sk: 591
+
+LeastSig0Bit.sk: 668
+
+LeastSig1Bit_Generator.sk: 4271
+
+ListReverse.sk: 4893
+
+RESULTS RUN 52:
+
+Fibonacci.sk: 2797
+
+HelloWorld.sk: 310
+
+InplaceSwap.sk: 388
+
+InplaceSwap_Repeat.sk: 490
+
+LeastSig0Bit.sk: 530
+
+LeastSig1Bit_Generator.sk: 4457
+
+ListReverse.sk: 4687
+
+RESULTS RUN 53:
+
+Fibonacci.sk: 2884
+
+HelloWorld.sk: 325
+
+InplaceSwap.sk: 432
+
+InplaceSwap_Repeat.sk: 646
+
+LeastSig0Bit.sk: 735
+
+LeastSig1Bit_Generator.sk: 4297
+
+ListReverse.sk: 3595
+
+RESULTS RUN 54:
+
+Fibonacci.sk: 2952
+
+HelloWorld.sk: 349
+
+InplaceSwap.sk: 401
+
+InplaceSwap_Repeat.sk: 503
+
+LeastSig0Bit.sk: 603
+
+LeastSig1Bit_Generator.sk: 4350
+
+ListReverse.sk: 4664
+
+RESULTS RUN 55:
+
+Fibonacci.sk: 3425
+
+HelloWorld.sk: 360
+
+InplaceSwap.sk: 455
+
+InplaceSwap_Repeat.sk: 627
+
+LeastSig0Bit.sk: 848
+
+LeastSig1Bit_Generator.sk: 5408
+
+ListReverse.sk: 6284
+
+RESULTS RUN 56:
+
+Fibonacci.sk: 3000
+
+HelloWorld.sk: 318
+
+InplaceSwap.sk: 372
+
+InplaceSwap_Repeat.sk: 562
+
+LeastSig0Bit.sk: 721
+
+LeastSig1Bit_Generator.sk: 4370
+
+ListReverse.sk: 4223
+
+RESULTS RUN 57:
+
+Fibonacci.sk: 2992
+
+HelloWorld.sk: 392
+
+InplaceSwap.sk: 489
+
+InplaceSwap_Repeat.sk: 764
+
+LeastSig0Bit.sk: 710
+
+LeastSig1Bit_Generator.sk: 4328
+
+ListReverse.sk: 3612
+
+RESULTS RUN 58:
+
+Fibonacci.sk: 3022
+
+HelloWorld.sk: 338
+
+InplaceSwap.sk: 372
+
+InplaceSwap_Repeat.sk: 497
+
+LeastSig0Bit.sk: 550
+
+LeastSig1Bit_Generator.sk: 4444
+
+ListReverse.sk: 4395
+
+RESULTS RUN 59:
+
+Fibonacci.sk: 2860
+
+HelloWorld.sk: 305
+
+InplaceSwap.sk: 406
+
+InplaceSwap_Repeat.sk: 603
+
+LeastSig0Bit.sk: 594
+
+LeastSig1Bit_Generator.sk: 4525
+
+ListReverse.sk: 5639
+
+RESULTS RUN 60:
+
+Fibonacci.sk: 2900
+
+HelloWorld.sk: 331
+
+InplaceSwap.sk: 402
+
+InplaceSwap_Repeat.sk: 489
+
+LeastSig0Bit.sk: 574
+
+LeastSig1Bit_Generator.sk: 4318
+
+ListReverse.sk: 4622
+
+RESULTS RUN 61:
+
+Fibonacci.sk: 2906
+
+HelloWorld.sk: 324
+
+InplaceSwap.sk: 410
+
+InplaceSwap_Repeat.sk: 804
+
+LeastSig0Bit.sk: 666
+
+LeastSig1Bit_Generator.sk: 4825
+
+ListReverse.sk: 4632
+
+RESULTS RUN 62:
+
+Fibonacci.sk: 2873
+
+HelloWorld.sk: 313
+
+InplaceSwap.sk: 379
+
+InplaceSwap_Repeat.sk: 553
+
+LeastSig0Bit.sk: 562
+
+LeastSig1Bit_Generator.sk: 4846
+
+ListReverse.sk: 6401
+
+RESULTS RUN 63:
+
+Fibonacci.sk: 2957
+
+HelloWorld.sk: 337
+
+InplaceSwap.sk: 433
+
+InplaceSwap_Repeat.sk: 598
+
+LeastSig0Bit.sk: 623
+
+LeastSig1Bit_Generator.sk: 4212
+
+ListReverse.sk: 6103
+
+RESULTS RUN 64:
+
+Fibonacci.sk: 2856
+
+HelloWorld.sk: 346
+
+InplaceSwap.sk: 485
+
+InplaceSwap_Repeat.sk: 578
+
+LeastSig0Bit.sk: 646
+
+LeastSig1Bit_Generator.sk: 4672
+
+ListReverse.sk: 4366
+
+RESULTS RUN 65:
+
+Fibonacci.sk: 3073
+
+HelloWorld.sk: 357
+
+InplaceSwap.sk: 417
+
+InplaceSwap_Repeat.sk: 543
+
+LeastSig0Bit.sk: 559
+
+LeastSig1Bit_Generator.sk: 4620
+
+ListReverse.sk: 4868
+
+RESULTS RUN 66:
+
+Fibonacci.sk: 2876
+
+HelloWorld.sk: 327
+
+InplaceSwap.sk: 381
+
+InplaceSwap_Repeat.sk: 529
+
+LeastSig0Bit.sk: 549
+
+LeastSig1Bit_Generator.sk: 4687
+
+ListReverse.sk: 3575
+
+RESULTS RUN 67:
+
+Fibonacci.sk: 2914
+
+HelloWorld.sk: 356
+
+InplaceSwap.sk: 433
+
+InplaceSwap_Repeat.sk: 531
+
+LeastSig0Bit.sk: 463
+
+LeastSig1Bit_Generator.sk: 4276
+
+ListReverse.sk: 5749
+
+RESULTS RUN 68:
+
+Fibonacci.sk: 2827
+
+HelloWorld.sk: 326
+
+InplaceSwap.sk: 368
+
+InplaceSwap_Repeat.sk: 522
+
+LeastSig0Bit.sk: 460
+
+LeastSig1Bit_Generator.sk: 3907
+
+ListReverse.sk: 5205
+
+RESULTS RUN 69:
+
+Fibonacci.sk: 2957
+
+HelloWorld.sk: 366
+
+InplaceSwap.sk: 384
+
+InplaceSwap_Repeat.sk: 685
+
+LeastSig0Bit.sk: 609
+
+LeastSig1Bit_Generator.sk: 3994
+
+ListReverse.sk: 6682
+
+RESULTS RUN 70:
+
+Fibonacci.sk: 2910
+
+HelloWorld.sk: 341
+
+InplaceSwap.sk: 382
+
+InplaceSwap_Repeat.sk: 553
+
+LeastSig0Bit.sk: 687
+
+LeastSig1Bit_Generator.sk: 4881
+
+ListReverse.sk: 7537
+
+RESULTS RUN 71:
+
+Fibonacci.sk: 2867
+
+HelloWorld.sk: 330
+
+InplaceSwap.sk: 372
+
+InplaceSwap_Repeat.sk: 492
+
+LeastSig0Bit.sk: 493
+
+LeastSig1Bit_Generator.sk: 4171
+
+ListReverse.sk: 3399
+
+RESULTS RUN 72:
+
+Fibonacci.sk: 2823
+
+HelloWorld.sk: 317
+
+InplaceSwap.sk: 384
+
+InplaceSwap_Repeat.sk: 492
+
+LeastSig0Bit.sk: 586
+
+LeastSig1Bit_Generator.sk: 4365
+
+ListReverse.sk: 3244
+
+RESULTS RUN 73:
+
+Fibonacci.sk: 3030
+
+HelloWorld.sk: 359
+
+InplaceSwap.sk: 531
+
+InplaceSwap_Repeat.sk: 528
+
+LeastSig0Bit.sk: 662
+
+LeastSig1Bit_Generator.sk: 5019
+
+ListReverse.sk: 7297
+
+RESULTS RUN 74:
+
+Fibonacci.sk: 2877
+
+HelloWorld.sk: 331
+
+InplaceSwap.sk: 435
+
+InplaceSwap_Repeat.sk: 518
+
+LeastSig0Bit.sk: 485
+
+LeastSig1Bit_Generator.sk: 5404
+
+ListReverse.sk: 3261
+
+RESULTS RUN 75:
+
+Fibonacci.sk: 2908
+
+HelloWorld.sk: 310
+
+InplaceSwap.sk: 391
+
+InplaceSwap_Repeat.sk: 560
+
+LeastSig0Bit.sk: 623
+
+LeastSig1Bit_Generator.sk: 4578
+
+ListReverse.sk: 5821
+
+RESULTS RUN 76:
+
+Fibonacci.sk: 2924
+
+HelloWorld.sk: 343
+
+InplaceSwap.sk: 449
+
+InplaceSwap_Repeat.sk: 488
+
+LeastSig0Bit.sk: 542
+
+LeastSig1Bit_Generator.sk: 4412
+
+ListReverse.sk: 6160
+
+RESULTS RUN 77:
+
+Fibonacci.sk: 2954
+
+HelloWorld.sk: 338
+
+InplaceSwap.sk: 420
+
+InplaceSwap_Repeat.sk: 505
+
+LeastSig0Bit.sk: 552
+
+LeastSig1Bit_Generator.sk: 4377
+
+ListReverse.sk: 3973
+
+RESULTS RUN 78:
+
+Fibonacci.sk: 2840
+
+HelloWorld.sk: 342
+
+InplaceSwap.sk: 410
+
+InplaceSwap_Repeat.sk: 527
+
+LeastSig0Bit.sk: 608
+
+LeastSig1Bit_Generator.sk: 4358
+
+ListReverse.sk: 3509
+
+RESULTS RUN 79:
+
+Fibonacci.sk: 2885
+
+HelloWorld.sk: 328
+
+InplaceSwap.sk: 392
+
+InplaceSwap_Repeat.sk: 547
+
+LeastSig0Bit.sk: 544
+
+LeastSig1Bit_Generator.sk: 3947
+
+ListReverse.sk: 5756
+
+RESULTS RUN 80:
+
+Fibonacci.sk: 2845
+
+HelloWorld.sk: 306
+
+InplaceSwap.sk: 378
+
+InplaceSwap_Repeat.sk: 442
+
+LeastSig0Bit.sk: 463
+
+LeastSig1Bit_Generator.sk: 3877
+
+ListReverse.sk: 4218
+
+RESULTS RUN 81:
+
+Fibonacci.sk: 2908
+
+HelloWorld.sk: 342
+
+InplaceSwap.sk: 445
+
+InplaceSwap_Repeat.sk: 457
+
+LeastSig0Bit.sk: 482
+
+LeastSig1Bit_Generator.sk: 4179
+
+ListReverse.sk: 3173
+
+RESULTS RUN 82:
+
+Fibonacci.sk: 2774
+
+HelloWorld.sk: 302
+
+InplaceSwap.sk: 374
+
+InplaceSwap_Repeat.sk: 443
+
+LeastSig0Bit.sk: 470
+
+LeastSig1Bit_Generator.sk: 3878
+
+ListReverse.sk: 5615
+
+RESULTS RUN 83:
+
+Fibonacci.sk: 2742
+
+HelloWorld.sk: 321
+
+InplaceSwap.sk: 382
+
+InplaceSwap_Repeat.sk: 490
+
+LeastSig0Bit.sk: 512
+
+LeastSig1Bit_Generator.sk: 3341
+
+ListReverse.sk: 5362
+
+RESULTS RUN 84:
+
+Fibonacci.sk: 2821
+
+HelloWorld.sk: 328
+
+InplaceSwap.sk: 377
+
+InplaceSwap_Repeat.sk: 464
+
+LeastSig0Bit.sk: 403
+
+LeastSig1Bit_Generator.sk: 3515
+
+ListReverse.sk: 5368
+
+RESULTS RUN 85:
+
+Fibonacci.sk: 2807
+
+HelloWorld.sk: 318
+
+InplaceSwap.sk: 359
+
+InplaceSwap_Repeat.sk: 471
+
+LeastSig0Bit.sk: 438
+
+LeastSig1Bit_Generator.sk: 4744
+
+ListReverse.sk: 3411
+
+RESULTS RUN 86:
+
+Fibonacci.sk: 2720
+
+HelloWorld.sk: 316
+
+InplaceSwap.sk: 396
+
+InplaceSwap_Repeat.sk: 476
+
+LeastSig0Bit.sk: 507
+
+LeastSig1Bit_Generator.sk: 3479
+
+ListReverse.sk: 3435
+
+RESULTS RUN 87:
+
+Fibonacci.sk: 2795
+
+HelloWorld.sk: 325
+
+InplaceSwap.sk: 370
+
+InplaceSwap_Repeat.sk: 441
+
+LeastSig0Bit.sk: 461
+
+LeastSig1Bit_Generator.sk: 3742
+
+ListReverse.sk: 2912
+
+RESULTS RUN 88:
+
+Fibonacci.sk: 2762
+
+HelloWorld.sk: 322
+
+InplaceSwap.sk: 374
+
+InplaceSwap_Repeat.sk: 503
+
+LeastSig0Bit.sk: 452
+
+LeastSig1Bit_Generator.sk: 3740
+
+ListReverse.sk: 3863
+
+RESULTS RUN 89:
+
+Fibonacci.sk: 2734
+
+HelloWorld.sk: 327
+
+InplaceSwap.sk: 366
+
+InplaceSwap_Repeat.sk: 541
+
+LeastSig0Bit.sk: 458
+
+LeastSig1Bit_Generator.sk: 7886
+
+ListReverse.sk: 3403
+
+RESULTS RUN 90:
+
+Fibonacci.sk: 3569
+
+HelloWorld.sk: 314
+
+InplaceSwap.sk: 379
+
+InplaceSwap_Repeat.sk: 487
+
+LeastSig0Bit.sk: 526
+
+LeastSig1Bit_Generator.sk: 4023
+
+ListReverse.sk: 6281
+
+RESULTS RUN 91:
+
+Fibonacci.sk: 2734
+
+HelloWorld.sk: 311
+
+InplaceSwap.sk: 375
+
+InplaceSwap_Repeat.sk: 481
+
+LeastSig0Bit.sk: 565
+
+LeastSig1Bit_Generator.sk: 2993
+
+ListReverse.sk: 5067
+
+RESULTS RUN 92:
+
+Fibonacci.sk: 2792
+
+HelloWorld.sk: 323
+
+InplaceSwap.sk: 372
+
+InplaceSwap_Repeat.sk: 492
+
+LeastSig0Bit.sk: 434
+
+LeastSig1Bit_Generator.sk: 3367
+
+ListReverse.sk: 3391
+
+RESULTS RUN 93:
+
+Fibonacci.sk: 2807
+
+HelloWorld.sk: 318
+
+InplaceSwap.sk: 377
+
+InplaceSwap_Repeat.sk: 439
+
+LeastSig0Bit.sk: 422
+
+LeastSig1Bit_Generator.sk: 3704
+
+ListReverse.sk: 4932
+
+RESULTS RUN 94:
+
+Fibonacci.sk: 2741
+
+HelloWorld.sk: 318
+
+InplaceSwap.sk: 396
+
+InplaceSwap_Repeat.sk: 493
+
+LeastSig0Bit.sk: 470
+
+LeastSig1Bit_Generator.sk: 4283
+
+ListReverse.sk: 4275
+
+RESULTS RUN 95:
+
+Fibonacci.sk: 2771
+
+HelloWorld.sk: 308
+
+InplaceSwap.sk: 410
+
+InplaceSwap_Repeat.sk: 497
+
+LeastSig0Bit.sk: 483
+
+LeastSig1Bit_Generator.sk: 3464
+
+ListReverse.sk: 7360
+
+RESULTS RUN 96:
+
+Fibonacci.sk: 3080
+
+HelloWorld.sk: 372
+
+InplaceSwap.sk: 545
+
+InplaceSwap_Repeat.sk: 687
+
+LeastSig0Bit.sk: 721
+
+LeastSig1Bit_Generator.sk: 4483
+
+ListReverse.sk: 4303
+
+RESULTS RUN 97:
+
+Fibonacci.sk: 2892
+
+HelloWorld.sk: 314
+
+InplaceSwap.sk: 368
+
+InplaceSwap_Repeat.sk: 488
+
+LeastSig0Bit.sk: 503
+
+LeastSig1Bit_Generator.sk: 4006
+
+ListReverse.sk: 3131
+
+RESULTS RUN 98:
+
+Fibonacci.sk: 2732
+
+HelloWorld.sk: 319
+
+InplaceSwap.sk: 381
+
+InplaceSwap_Repeat.sk: 492
+
+LeastSig0Bit.sk: 443
+
+LeastSig1Bit_Generator.sk: 5074
+
+ListReverse.sk: 5041
+
+RESULTS RUN 99:
+
+Fibonacci.sk: 2756
+
+HelloWorld.sk: 363
+
+InplaceSwap.sk: 360
+
+InplaceSwap_Repeat.sk: 476
+
+LeastSig0Bit.sk: 485
+
+LeastSig1Bit_Generator.sk: 3178
+
+ListReverse.sk: 3418
+
+RESULTS RUN 100:
+
+Fibonacci.sk: 2794
+
+HelloWorld.sk: 380
+
+InplaceSwap.sk: 365
+
+InplaceSwap_Repeat.sk: 450
+
+LeastSig0Bit.sk: 482
+
+LeastSig1Bit_Generator.sk: 5618
+
+ListReverse.sk: 2939
+
+RESULTS RUN 101:
+
+Fibonacci.sk: 2824
+
+HelloWorld.sk: 311
+
+InplaceSwap.sk: 385
+
+InplaceSwap_Repeat.sk: 474
+
+LeastSig0Bit.sk: 435
+
+LeastSig1Bit_Generator.sk: 3510
+
+ListReverse.sk: 3970
+
+RESULTS RUN 102:
+
+Fibonacci.sk: 2741
+
+HelloWorld.sk: 323
+
+InplaceSwap.sk: 381
+
+InplaceSwap_Repeat.sk: 499
+
+LeastSig0Bit.sk: 455
+
+LeastSig1Bit_Generator.sk: 3640
+
+ListReverse.sk: 4599
+
+RESULTS RUN 103:
+
+Fibonacci.sk: 2867
+
+HelloWorld.sk: 334
+
+InplaceSwap.sk: 399
+
+InplaceSwap_Repeat.sk: 432
+
+LeastSig0Bit.sk: 549
+
+LeastSig1Bit_Generator.sk: 3367
+
+ListReverse.sk: 4325
+
+RESULTS RUN 104:
+
+Fibonacci.sk: 2863
+
+HelloWorld.sk: 316
+
+InplaceSwap.sk: 378
+
+InplaceSwap_Repeat.sk: 440
+
+LeastSig0Bit.sk: 465
+
+LeastSig1Bit_Generator.sk: 3636
+
+ListReverse.sk: 5021
+
+RESULTS RUN 105:
+
+Fibonacci.sk: 2713
+
+HelloWorld.sk: 311
+
+InplaceSwap.sk: 372
+
+InplaceSwap_Repeat.sk: 500
+
+LeastSig0Bit.sk: 476
+
+LeastSig1Bit_Generator.sk: 4154
+
+ListReverse.sk: 3411
+
+RESULTS RUN 106:
+
+Fibonacci.sk: 2788
+
+HelloWorld.sk: 326
+
+InplaceSwap.sk: 361
+
+InplaceSwap_Repeat.sk: 568
+
+LeastSig0Bit.sk: 437
+
+LeastSig1Bit_Generator.sk: 3514
+
+ListReverse.sk: 4261
+
+RESULTS RUN 107:
+
+Fibonacci.sk: 2861
+
+HelloWorld.sk: 332
+
+InplaceSwap.sk: 376
+
+InplaceSwap_Repeat.sk: 449
+
+LeastSig0Bit.sk: 456
+
+LeastSig1Bit_Generator.sk: 6420
+
+ListReverse.sk: 6862
+
+RESULTS RUN 108:
+
+Fibonacci.sk: 3503
+
+HelloWorld.sk: 367
+
+InplaceSwap.sk: 582
+
+InplaceSwap_Repeat.sk: 883
+
+LeastSig0Bit.sk: 843
+
+LeastSig1Bit_Generator.sk: 4480
+
+ListReverse.sk: 3874
+
+RESULTS RUN 109:
+
+Fibonacci.sk: 2804
+
+HelloWorld.sk: 328
+
+InplaceSwap.sk: 391
+
+InplaceSwap_Repeat.sk: 526
+
+LeastSig0Bit.sk: 556
+
+LeastSig1Bit_Generator.sk: 4830
+
+ListReverse.sk: 4035
+
+RESULTS RUN 110:
+
+Fibonacci.sk: 3156
+
+HelloWorld.sk: 315
+
+InplaceSwap.sk: 373
+
+InplaceSwap_Repeat.sk: 492
+
+LeastSig0Bit.sk: 518
+
+LeastSig1Bit_Generator.sk: 3811
+
+ListReverse.sk: 4528
+
+TOTAL RUNS = 100
+SKIPPED RUNS = 10
+Fibonacci.sk: AVG: 2928.50, TOTAL: 292850
+HelloWorld.sk: AVG: 345.40, TOTAL: 34540
+InplaceSwap.sk: AVG: 421.70, TOTAL: 42170
+InplaceSwap_Repeat.sk: AVG: 548.22, TOTAL: 54822
+LeastSig0Bit.sk: AVG: 566.61, TOTAL: 56661
+LeastSig1Bit_Generator.sk: AVG: 4422.39, TOTAL: 442239
+ListReverse.sk: AVG: 4569.76, TOTAL: 456976

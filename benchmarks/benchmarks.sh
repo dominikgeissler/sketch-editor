@@ -9,7 +9,7 @@
 # for a given number of times and average the
 # time for each example afterwards.
 
-# Note: The first run is a warmup run and is
+# Note: The first runs are warmup runs and are
 # not added to the total at the end, but
 # still logged as a baseline comparison.
 
@@ -27,14 +27,25 @@
 ##                  Usage                    ##
 ###############################################
 
-# ./benchmarks.sh <num_runs>
+# ./benchmarks.sh <num_runs> <num_warmup_runs>
 #     <num_runs>: The number of iterations
+#     <num_warmup_runs>: The number of warmup runs
+#                        (optional, default: 1)
 
 ###############################################
 
 
 # The number of times to run each example
 NUM_RUNS=$1
+
+# The number of warmup runs
+NUM_WARMUP_RUNS=$2
+
+# If no number of warmup rounds was given, use 1
+if [ -z "$NUM_WARMUP_RUNS" ];
+then
+  NUM_WARMUP_RUNS=1
+fi
 
 # The path to the examples directory
 EXAMPLES_DIR=$(echo $(readlink -f "../src/examples"))
@@ -47,18 +58,20 @@ mkdir results
 # Create an array that saves the total time for each example
 declare -A results
 
-for i in $(seq 0 $NUM_RUNS);
+for i in $(seq 1 $(($NUM_RUNS + $NUM_WARMUP_RUNS)));
 do
-  if [[ $i -eq 0 ]];
+  if [[ $i -le $NUM_WARMUP_RUNS ]];
   then
     echo "-----------------"
-    echo "|  Warmup Run   |"
+    echo "|  Warmup Run $i   |"
     echo "-----------------"
     echo
   else
-    mkdir results/iteration_$i
+    # Subtract the number of warmup runs from the current run
+    run=$(($i - $NUM_WARMUP_RUNS))
+    mkdir results/iteration_$run
     echo "-----------------"
-    echo "|  Iteration $i  |"
+    echo "|  Iteration $run  |"
     echo "-----------------"
     echo
   fi
@@ -75,14 +88,14 @@ do
 
     # If this is the first run, print output to console
     # and don't save the result
-    if [[ $i -eq 0 ]];
+    if [[ $i -le $NUM_WARMUP_RUNS ]];
     then
       echo "$output"
       continue
     fi
 
     # Save the output
-    echo "$output" > results/iteration_$i/$example.txt
+    echo "$output" > results/iteration_$run/$example.txt
 
     # Extract total time
     total_time=$(echo "$output" | grep 'Total time' | awk '{print $4}')
@@ -137,6 +150,7 @@ echo "Writing results to results.txt"
 echo
 
 echo "TOTAL RUNS = $NUM_RUNS" >> results/results.txt
+echo "SKIPPED RUNS = $NUM_WARMUP_RUNS" >> results/results.txt
 for example in "${EXAMPLES[@]}";
 do
   echo "$example: AVG: ${avg[$example]}, TOTAL: ${results[$example]}" >> results/results.txt
