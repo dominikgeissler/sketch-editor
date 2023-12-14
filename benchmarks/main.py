@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 class Result:
     def __init__(self, run_number, time):
@@ -24,6 +25,14 @@ for line in lines:
         if file_name not in d:
             d[file_name] = []
         d[file_name].append(Result(current_run, time))
+
+# Calculate the average time for each file and the standard deviation
+# Note: The average time should be the same as the average time in the results.txt file
+for file_name in d.keys():
+    times = [result.time for result in d[file_name]]
+    avg = np.mean(times)
+    std = np.std(times)
+    print(f"{file_name}: {avg} ms +/- {std} ms")
 
 # Line Graph
 for file_name in d.keys():
