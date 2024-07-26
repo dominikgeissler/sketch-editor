@@ -52,6 +52,11 @@ const simpleServer = http.createServer(
     // File or folder requested
     // This is veeerry insecure but convenient
     if (req.method === 'GET') {
+    if (path.normalize(decodeURI(req.url)) !== decodeURI(req.url)) {
+        res.statusCode = 403;
+        res.end();
+        return;
+    }
       const reqArgs = req.url.split('/');
       let fileName = reqArgs.pop();
 
